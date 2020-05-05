@@ -2,3 +2,8 @@
 .DS_Store
 composer.phar
 /vendor/
+swagger-codegen-cli-*.jar
+phpunit.xml.dist
+git_push.sh
+.travis.yml
+.php_cs
