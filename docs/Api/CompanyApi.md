@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**deleteV1CompanyNotificationsId**](CompanyApi.md#deleteV1CompanyNotificationsId) | **DELETE** /v1/company/notifications/{id} | Delete a specific notification subscription
 [**deleteV1CompanyProfilesId**](CompanyApi.md#deleteV1CompanyProfilesId) | **DELETE** /v1/company/profiles/{id} | Delete a network registration
 [**getV1CompanyConsumers**](CompanyApi.md#getV1CompanyConsumers) | **GET** /v1/company/consumers | List B2C Consumers
+[**getV1CompanyMandates**](CompanyApi.md#getV1CompanyMandates) | **GET** /v1/company/mandates | List B2C ATG mandates
 [**getV1CompanyNotifications**](CompanyApi.md#getV1CompanyNotifications) | **GET** /v1/company/notifications | List notification subscriptions
 [**getV1CompanyNotificationsId**](CompanyApi.md#getV1CompanyNotificationsId) | **GET** /v1/company/notifications/{id} | Fetch a specific notification subscription
 [**getV1CompanyProfiles**](CompanyApi.md#getV1CompanyProfiles) | **GET** /v1/company/profiles | List network registrations
@@ -169,6 +170,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Vertaislaina\Maventa\AutoXChange\Entity\Consumer[]**](../Model/Consumer.md)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getV1CompanyMandates**
+> \Vertaislaina\Maventa\AutoXChange\Entity\Mandate[] getV1CompanyMandates($query, $timestamp, $page, $perPage)
+
+List B2C ATG mandates
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$query = "query_example"; // string | Find by KID or reference
+$timestamp = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Timestamp for latest update
+$page = 1; // int | Page to fetch
+$perPage = 20; // int | Number of items per page, values up to 100 supported
+
+try {
+    $result = $apiInstance->getV1CompanyMandates($query, $timestamp, $page, $perPage);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->getV1CompanyMandates: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | **string**| Find by KID or reference | [optional]
+ **timestamp** | **\DateTime**| Timestamp for latest update | [optional]
+ **page** | **int**| Page to fetch | [optional] [default to 1]
+ **perPage** | **int**| Number of items per page, values up to 100 supported | [optional] [default to 20]
+
+### Return type
+
+[**\Vertaislaina\Maventa\AutoXChange\Entity\Mandate[]**](../Model/Mandate.md)
 
 ### Authorization
 
@@ -503,7 +563,7 @@ void (empty response body)
 
 Modify company settings
 
-### Company checks  Currently supported on_invoice_receive checks: VAT, SUPPLIER_ACTIVATION  ``` {   \"checks\": {     \"on_invoice_receive\": [       \"VAT\"     ]   } } ```   ### Company logos  ``` {   \"logos\": {   } } ```   ### Company general settings  ``` {   \"send_invoice_general\": {     \"hold_multiple_recipients\": false,     \"stop_duplicate_numbers\": false   } } ```   ### Company invoice print settings  ``` {   \"send_invoice_print\": {     \"enabled\": false,     \"letter_class\": \"ECONOMY\",     \"color_scheme\": \"BLACK_AND_WHITE\",     \"attachment_print\": false,     \"marketing_page\": false,     \"use_own_pdf\": false   } } ```   ### Company details  ``` {   \"details\": {     \"name\": \"My Company Ltd\",     \"email\": \"info@company.com\",     \"website\": \"https://my.company.com\"   } } ```  ### Company address  ``` {   \"address\": {     \"street_address\": \"My street 1\",     \"post_code\": \"123456\",     \"post_office\": \"Oslo\",     \"city\": \"Oslo\",     \"country\": \"NO\"   } } ```    ### Company send invoice email related settings  ``` {   \"send_invoice_email\": {     \"enabled\": true,     \"how_to_send\": \"EMBEDDED | WITH_OBJECTIONS | WITH_LINK (only if enabled is true)\",     \"reminder_frequency\": 4,     \"content_data\": {       \"note_to_receiver\": \"A message added to the receiver\",       \"contact\": {         \"email\": \"invoices@company.com (this is validated by sending a link email to the email)\",         \"name\": \"Info User\",         \"phone\": \"+555 55 555 5555\"       }     }   } } ```   ### Company invoice notification settings  ``` {   \"invoice_notifications\": {     \"on_receiving\": {       \"enabled\": true,       \"how_to_send\": \"OTHER_EMAIL\",       \"other_email\": \"info@company.com\"     },     \"on_send_errors\": {       \"to_user\": true,       \"to_emails\": [         \"info@company.com\"       ]     }   } } ```   ### Landbrukets Dataflyt settings for the accounting company  To enable the receiving of invoices from Landbrukets Dataflyt the accounting company has to provide it's credentials to the Dataflyt registry.  Example of request body for setting the Dataflyt credentials:  ``` {   \"dataflyt\": {     \"username\": \"username\",     \"password\": \"password\"   } } ```   ### Landbrukets Dataflyt settings for the farmer  To enable an accounting company to start receiving invoices on behaf of the farmer, the farmer company has to create a link between itself and the accounting company. The user that creates the link has to be a user in both the farmers company and the accounting office company. Example of request body for setting the Dataflyt credentials:  ``` {   \"dataflyt_link\": {     \"acc_company_id\": \"5331170e-6b65-4998-bf4f-7c9cbdd9e192\",     \"orgnumber\": \"123456789\"   } } ```  It's also possible to set or change the ```dataflyt_id``` used for fetching the invoices, by providing the value in the request.  ``` {   \"dataflyt_link\": {     \"acc_company_id\": \"3f28e983-b4b3-4628-bdc3-c00d49bf3580\",     \"orgnumber\": \"123456789\",     \"dataflyt_id\": 2000   } } ```  To disable the receiving of self billing invoices the link between the farmers company and the accounting company has to be reset.  ``` {   \"dataflyt_link\": {     \"acc_company_id\": null   } } ```
+### Company checks  Currently supported on_invoice_receive checks: SUPPLIER_ACTIVATION, SENDER_BID_STATUS, VAT  ``` {   \"checks\": {     \"on_invoice_receive\": [       \"SUPPLIER_ACTIVATION\"     ]   } } ```   ### Company logos  ``` {   \"logos\": {   } } ```   ### Company general settings  ``` {   \"send_invoice_general\": {     \"hold_multiple_recipients\": false,     \"stop_duplicate_numbers\": false   } } ```   ### Company invoice print settings  ``` {   \"send_invoice_print\": {     \"enabled\": false,     \"letter_class\": \"ECONOMY\",     \"color_scheme\": \"BLACK_AND_WHITE\",     \"attachment_print\": false,     \"marketing_page\": false,     \"use_own_pdf\": false   } } ```   ### Company details  ``` {   \"details\": {     \"name\": \"My Company Ltd\",     \"email\": \"info@company.com\",     \"website\": \"https://my.company.com\"   } } ```  ### Company address  ``` {   \"address\": {     \"street_address\": \"My street 1\",     \"post_code\": \"123456\",     \"post_office\": \"Oslo\",     \"city\": \"Oslo\",     \"country\": \"NO\"   } } ```    ### Company send invoice email related settings  ``` {   \"send_invoice_email\": {     \"enabled\": true,     \"how_to_send\": \"EMBEDDED | WITH_OBJECTIONS | WITH_LINK (only if enabled is true)\",     \"reminder_frequency\": 4,     \"content_data\": {       \"note_to_receiver\": \"A message added to the receiver\",       \"contact\": {         \"email\": \"invoices@company.com (this is validated by sending a link email to the email)\",         \"name\": \"Info User\",         \"phone\": \"+555 55 555 5555\"       }     }   } } ```   ### Company invoice notification settings  ``` {   \"invoice_notifications\": {     \"on_receiving\": {       \"enabled\": true,       \"how_to_send\": \"OTHER_EMAIL\",       \"other_email\": \"info@company.com\"     },     \"on_send_errors\": {       \"to_user\": true,       \"to_emails\": [         \"info@company.com\"       ]     }   } } ```   ### Landbrukets Dataflyt settings for the accounting company  To enable the receiving of invoices from Landbrukets Dataflyt the accounting company has to provide it's credentials to the Dataflyt registry.  Example of request body for setting the Dataflyt credentials:  ``` {   \"dataflyt\": {     \"username\": \"username\",     \"password\": \"password\"   } } ```   ### Landbrukets Dataflyt settings for the farmer  To enable an accounting company to start receiving invoices on behaf of the farmer, the farmer company has to create a link between itself and the accounting company. The user that creates the link has to be a user in both the farmers company and the accounting office company. Example of request body for setting the Dataflyt credentials:  ``` {   \"dataflyt_link\": {     \"acc_company_id\": \"5ff6ad7d-a000-4d9b-a602-16173fba261b\",     \"orgnumber\": \"123456789\"   } } ```  It's also possible to set or change the ```dataflyt_id``` used for fetching the invoices, by providing the value in the request.  ``` {   \"dataflyt_link\": {     \"acc_company_id\": \"3f81729a-820f-4337-afb2-1ab1b80e8787\",     \"orgnumber\": \"123456789\",     \"dataflyt_id\": 2000   } } ```  To disable the receiving of self billing invoices the link between the farmers company and the accounting company has to be reset.  ``` {   \"dataflyt_link\": {     \"acc_company_id\": null   } } ```
 
 ### Example
 ```php

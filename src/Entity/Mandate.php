@@ -1,6 +1,6 @@
 <?php
 /**
- * Status
+ * Mandate
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * Status Class Doc Comment
+ * Mandate Class Doc Comment
  *
  * @category Class
- * @description Returns information of currently authenticated identity. Only for testing purposes.
+ * @description 
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Status implements ModelInterface, ArrayAccess
+class Mandate implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Status implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Status';
+    protected static $swaggerModelName = 'Mandate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class Status implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'clientId' => 'string',
-        'expiresAt' => '\DateTime'
+        'kid' => 'string',
+        'accountNumber' => 'string',
+        'notification' => 'string',
+        'status' => 'string',
+        'updatedAt' => '\DateTime'
     ];
 
     /**
@@ -68,8 +71,11 @@ class Status implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'clientId' => null,
-        'expiresAt' => 'date-time'
+        'kid' => null,
+        'accountNumber' => null,
+        'notification' => null,
+        'status' => null,
+        'updatedAt' => 'date-time'
     ];
 
     /**
@@ -99,8 +105,11 @@ class Status implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'clientId' => 'client_id',
-        'expiresAt' => 'expires_at'
+        'kid' => 'kid',
+        'accountNumber' => 'account_number',
+        'notification' => 'notification',
+        'status' => 'status',
+        'updatedAt' => 'updated_at'
     ];
 
     /**
@@ -109,8 +118,11 @@ class Status implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'clientId' => 'setClientId',
-        'expiresAt' => 'setExpiresAt'
+        'kid' => 'setKid',
+        'accountNumber' => 'setAccountNumber',
+        'notification' => 'setNotification',
+        'status' => 'setStatus',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -119,8 +131,11 @@ class Status implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'clientId' => 'getClientId',
-        'expiresAt' => 'getExpiresAt'
+        'kid' => 'getKid',
+        'accountNumber' => 'getAccountNumber',
+        'notification' => 'getNotification',
+        'status' => 'getStatus',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -183,8 +198,11 @@ class Status implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['clientId'] = isset($data['clientId']) ? $data['clientId'] : null;
-        $this->container['expiresAt'] = isset($data['expiresAt']) ? $data['expiresAt'] : null;
+        $this->container['kid'] = isset($data['kid']) ? $data['kid'] : null;
+        $this->container['accountNumber'] = isset($data['accountNumber']) ? $data['accountNumber'] : null;
+        $this->container['notification'] = isset($data['notification']) ? $data['notification'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['updatedAt'] = isset($data['updatedAt']) ? $data['updatedAt'] : null;
     }
 
     /**
@@ -196,9 +214,6 @@ class Status implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['clientId'] === null) {
-            $invalidProperties[] = "'clientId' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,49 +230,121 @@ class Status implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets clientId
+     * Gets kid
      *
      * @return string
      */
-    public function getClientId()
+    public function getKid()
     {
-        return $this->container['clientId'];
+        return $this->container['kid'];
     }
 
     /**
-     * Sets clientId
+     * Sets kid
      *
-     * @param string $clientId Authenticated client_id. Will be company_id for Companies
+     * @param string $kid KID
      *
      * @return $this
      */
-    public function setClientId($clientId)
+    public function setKid($kid)
     {
-        $this->container['clientId'] = $clientId;
+        $this->container['kid'] = $kid;
 
         return $this;
     }
 
     /**
-     * Gets expiresAt
+     * Gets accountNumber
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getExpiresAt()
+    public function getAccountNumber()
     {
-        return $this->container['expiresAt'];
+        return $this->container['accountNumber'];
     }
 
     /**
-     * Sets expiresAt
+     * Sets accountNumber
      *
-     * @param \DateTime $expiresAt Tells when the current authentication token will expire
+     * @param string $accountNumber Account number
      *
      * @return $this
      */
-    public function setExpiresAt($expiresAt)
+    public function setAccountNumber($accountNumber)
     {
-        $this->container['expiresAt'] = $expiresAt;
+        $this->container['accountNumber'] = $accountNumber;
+
+        return $this;
+    }
+
+    /**
+     * Gets notification
+     *
+     * @return string
+     */
+    public function getNotification()
+    {
+        return $this->container['notification'];
+    }
+
+    /**
+     * Sets notification
+     *
+     * @param string $notification Notifications enabled
+     *
+     * @return $this
+     */
+    public function setNotification($notification)
+    {
+        $this->container['notification'] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status Status
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updatedAt'];
+    }
+
+    /**
+     * Sets updatedAt
+     *
+     * @param \DateTime $updatedAt Entry updated timestamp
+     *
+     * @return $this
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

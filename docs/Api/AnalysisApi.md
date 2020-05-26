@@ -87,7 +87,7 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\AnalysisApi(
 );
 $resourceId = "resourceId_example"; // string | The ID of the resource
 $resourceType = "resourceType_example"; // string | The type of the resource to run checks for
-$checksToRun = array("checksToRun_example"); // string[] | Which checks to run: e.g. VAT, SUPPLIER_ACTIVATION
+$checksToRun = array("checksToRun_example"); // string[] | Which checks to run: e.g. SUPPLIER_ACTIVATION, SENDER_BID_STATUS, VAT
 
 try {
     $apiInstance->postV1Analysis($resourceId, $resourceType, $checksToRun);
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **resourceId** | **string**| The ID of the resource |
  **resourceType** | **string**| The type of the resource to run checks for |
- **checksToRun** | [**string[]**](../Model/string.md)| Which checks to run: e.g. VAT, SUPPLIER_ACTIVATION |
+ **checksToRun** | [**string[]**](../Model/string.md)| Which checks to run: e.g. SUPPLIER_ACTIVATION, SENDER_BID_STATUS, VAT |
 
 ### Return type
 
