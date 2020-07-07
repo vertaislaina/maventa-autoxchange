@@ -1,6 +1,6 @@
 <?php
 /**
- * Endpoint
+ * InvoiceAction
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * Endpoint Class Doc Comment
+ * InvoiceAction Class Doc Comment
  *
  * @category Class
- * @description Fetch sending options for company bid
+ * @description 
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Endpoint implements ModelInterface, ArrayAccess
+class InvoiceAction implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Endpoint implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Endpoint';
+    protected static $swaggerModelName = 'InvoiceAction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class Endpoint implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'bid' => 'string',
-        'sending' => 'string[]'
+        'type' => 'string',
+        'channel' => 'string',
+        'message' => 'string',
+        'happenedAt' => '\DateTime'
     ];
 
     /**
@@ -68,8 +70,10 @@ class Endpoint implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'bid' => null,
-        'sending' => null
+        'type' => null,
+        'channel' => null,
+        'message' => null,
+        'happenedAt' => 'date-time'
     ];
 
     /**
@@ -99,8 +103,10 @@ class Endpoint implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'bid' => 'bid',
-        'sending' => 'sending'
+        'type' => 'type',
+        'channel' => 'channel',
+        'message' => 'message',
+        'happenedAt' => 'happened_at'
     ];
 
     /**
@@ -109,8 +115,10 @@ class Endpoint implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'bid' => 'setBid',
-        'sending' => 'setSending'
+        'type' => 'setType',
+        'channel' => 'setChannel',
+        'message' => 'setMessage',
+        'happenedAt' => 'setHappenedAt'
     ];
 
     /**
@@ -119,8 +127,10 @@ class Endpoint implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'bid' => 'getBid',
-        'sending' => 'getSending'
+        'type' => 'getType',
+        'channel' => 'getChannel',
+        'message' => 'getMessage',
+        'happenedAt' => 'getHappenedAt'
     ];
 
     /**
@@ -164,8 +174,44 @@ class Endpoint implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const TYPE_CREATED = 'CREATED';
+    const TYPE_SENT = 'SENT';
+    const TYPE_ERROR = 'ERROR';
+    const CHANNEL_EINVOICE = 'EINVOICE';
+    const CHANNEL__PRINT = 'PRINT';
+    const CHANNEL_SCAN = 'SCAN';
+    const CHANNEL_EMAIL = 'EMAIL';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_CREATED,
+            self::TYPE_SENT,
+            self::TYPE_ERROR,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getChannelAllowableValues()
+    {
+        return [
+            self::CHANNEL_EINVOICE,
+            self::CHANNEL__PRINT,
+            self::CHANNEL_SCAN,
+            self::CHANNEL_EMAIL,
+        ];
+    }
     
 
     /**
@@ -183,8 +229,10 @@ class Endpoint implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['bid'] = isset($data['bid']) ? $data['bid'] : null;
-        $this->container['sending'] = isset($data['sending']) ? $data['sending'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['channel'] = isset($data['channel']) ? $data['channel'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['happenedAt'] = isset($data['happenedAt']) ? $data['happenedAt'] : null;
     }
 
     /**
@@ -196,6 +244,28 @@ class Endpoint implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getChannelAllowableValues();
+        if (!is_null($this->container['channel']) && !in_array($this->container['channel'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'channel', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['happenedAt'] === null) {
+            $invalidProperties[] = "'happenedAt' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -212,49 +282,115 @@ class Endpoint implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets bid
+     * Gets type
      *
      * @return string
      */
-    public function getBid()
+    public function getType()
     {
-        return $this->container['bid'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets bid
+     * Sets type
      *
-     * @param string $bid Business ID / Organisation number
+     * @param string $type The type of event that happened
      *
      * @return $this
      */
-    public function setBid($bid)
+    public function setType($type)
     {
-        $this->container['bid'] = $bid;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets sending
+     * Gets channel
      *
-     * @return string[]
+     * @return string
      */
-    public function getSending()
+    public function getChannel()
     {
-        return $this->container['sending'];
+        return $this->container['channel'];
     }
 
     /**
-     * Sets sending
+     * Sets channel
      *
-     * @param string[] $sending Available options for sending
+     * @param string $channel Channel the event is related to. For example from where the invoice is coming from or where it was sent.
      *
      * @return $this
      */
-    public function setSending($sending)
+    public function setChannel($channel)
     {
-        $this->container['sending'] = $sending;
+        $allowedValues = $this->getChannelAllowableValues();
+        if (!is_null($channel) && !in_array($channel, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'channel', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['channel'] = $channel;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message Additional message related to the event
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets happenedAt
+     *
+     * @return \DateTime
+     */
+    public function getHappenedAt()
+    {
+        return $this->container['happenedAt'];
+    }
+
+    /**
+     * Sets happenedAt
+     *
+     * @param \DateTime $happenedAt When the event happened
+     *
+     * @return $this
+     */
+    public function setHappenedAt($happenedAt)
+    {
+        $this->container['happenedAt'] = $happenedAt;
 
         return $this;
     }

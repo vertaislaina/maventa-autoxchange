@@ -5,11 +5,11 @@ All URIs are relative to *https://ax.maventa.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getV1AnalysisId**](AnalysisApi.md#getV1AnalysisId) | **GET** /v1/analysis/{id} | 
-[**postV1Analysis**](AnalysisApi.md#postV1Analysis) | **POST** /v1/analysis | 
+[**postV1Analysis**](AnalysisApi.md#postV1Analysis) | **POST** /v1/analysis | Trigger analysis for resource
 
 
 # **getV1AnalysisId**
-> getV1AnalysisId($id)
+> \Vertaislaina\Maventa\AutoXChange\Entity\AnalysisResult getV1AnalysisId($id)
 
 
 
@@ -34,7 +34,8 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\AnalysisApi(
 $id = "id_example"; // string | The ID of the resource
 
 try {
-    $apiInstance->getV1AnalysisId($id);
+    $result = $apiInstance->getV1AnalysisId($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalysisApi->getV1AnalysisId: ', $e->getMessage(), PHP_EOL;
 }
@@ -49,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\AnalysisResult**](../Model/AnalysisResult.md)
 
 ### Authorization
 
@@ -63,11 +64,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postV1Analysis**
-> postV1Analysis($resourceId, $resourceType, $checksToRun)
-
-
+> \Vertaislaina\Maventa\AutoXChange\Entity\AnalysisResult postV1Analysis($resourceId, $resourceType, $checksToRun)
 
 Trigger analysis for resource
+
+Following checks can be triggered:  **SUPPLIER_ACTIVATION** Check performed on: INVOICE Checks electronic sending capabilities of suppliers sending scan invoices based on if company has sent invoices electronically before using AutoInvoice.    **SENDER_BID_STATUS** Check performed on: INVOICE Checks that the business ID of invoice sender is registered and in active state in the country company register. The registries used to get this information, depend on the country of the sender and are as follows: 1. Finland - YTJ [ http://www.ytj.fi ] 2. Norway - Brønnøysundregistrene [ https://brreg.no ] 3. Other countries -> not supported    **VAT** Check performed on: INVOICE Check that the sender of the invoice is registered to charge VAT. The registries used to get this information, depend on the country of the sender and are as follows: 1. Norway - Brønnøysundregistrene [ https://brreg.no ] 2. EU countries - Vies [ https://ec.europa.eu/taxation_customs/vies/ ] 3. Other countries - not supported
 
 ### Example
 ```php
@@ -90,7 +91,8 @@ $resourceType = "resourceType_example"; // string | The type of the resource to 
 $checksToRun = array("checksToRun_example"); // string[] | Which checks to run: e.g. SUPPLIER_ACTIVATION, SENDER_BID_STATUS, VAT
 
 try {
-    $apiInstance->postV1Analysis($resourceId, $resourceType, $checksToRun);
+    $result = $apiInstance->postV1Analysis($resourceId, $resourceType, $checksToRun);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalysisApi->postV1Analysis: ', $e->getMessage(), PHP_EOL;
 }
@@ -107,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\AnalysisResult**](../Model/AnalysisResult.md)
 
 ### Authorization
 

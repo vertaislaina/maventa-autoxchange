@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getV1Invoices**](InvoicesApi.md#getV1Invoices) | **GET** /v1/invoices | List invoices
 [**getV1InvoicesId**](InvoicesApi.md#getV1InvoicesId) | **GET** /v1/invoices/{id} | Invoice details
-[**getV1InvoicesIdEvents**](InvoicesApi.md#getV1InvoicesIdEvents) | **GET** /v1/invoices/{id}/events | List invoice events
+[**getV1InvoicesIdActions**](InvoicesApi.md#getV1InvoicesIdActions) | **GET** /v1/invoices/{id}/actions | List invoice actions
 [**getV1InvoicesIdFilesFileId**](InvoicesApi.md#getV1InvoicesIdFilesFileId) | **GET** /v1/invoices/{id}/files/{file_id} | Fetch file content
 [**postV1Invoices**](InvoicesApi.md#postV1Invoices) | **POST** /v1/invoices | Upload new invoice
 
@@ -141,10 +141,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getV1InvoicesIdEvents**
-> \Vertaislaina\Maventa\AutoXChange\Entity\InvoiceEvent[] getV1InvoicesIdEvents($id)
+# **getV1InvoicesIdActions**
+> \Vertaislaina\Maventa\AutoXChange\Entity\InvoiceAction[] getV1InvoicesIdActions($id, $type)
 
-List invoice events
+List invoice actions
 
 
 
@@ -163,12 +163,13 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\InvoicesApi(
     $config
 );
 $id = "id_example"; // string | Invoice ID
+$type = array("type_example"); // string[] | Action type
 
 try {
-    $result = $apiInstance->getV1InvoicesIdEvents($id);
+    $result = $apiInstance->getV1InvoicesIdActions($id, $type);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling InvoicesApi->getV1InvoicesIdEvents: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling InvoicesApi->getV1InvoicesIdActions: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -178,10 +179,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Invoice ID |
+ **type** | [**string[]**](../Model/string.md)| Action type | [optional]
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\InvoiceEvent[]**](../Model/InvoiceEvent.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\InvoiceAction[]**](../Model/InvoiceAction.md)
 
 ### Authorization
 

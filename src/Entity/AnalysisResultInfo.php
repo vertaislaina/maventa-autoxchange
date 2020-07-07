@@ -1,6 +1,6 @@
 <?php
 /**
- * Endpoint
+ * AnalysisResultInfo
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * Endpoint Class Doc Comment
+ * AnalysisResultInfo Class Doc Comment
  *
  * @category Class
- * @description Fetch sending options for company bid
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Endpoint implements ModelInterface, ArrayAccess
+class AnalysisResultInfo implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class Endpoint implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Endpoint';
+    protected static $swaggerModelName = 'AnalysisResultInfo';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,11 @@ class Endpoint implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'bid' => 'string',
-        'sending' => 'string[]'
+        'status' => 'string',
+        'text' => 'string',
+        'reasonCode' => 'string',
+        'checkDate' => '\DateTime',
+        'data' => 'object'
     ];
 
     /**
@@ -68,8 +70,11 @@ class Endpoint implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'bid' => null,
-        'sending' => null
+        'status' => null,
+        'text' => null,
+        'reasonCode' => null,
+        'checkDate' => 'date-time',
+        'data' => null
     ];
 
     /**
@@ -99,8 +104,11 @@ class Endpoint implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'bid' => 'bid',
-        'sending' => 'sending'
+        'status' => 'status',
+        'text' => 'text',
+        'reasonCode' => 'reason_code',
+        'checkDate' => 'check_date',
+        'data' => 'data'
     ];
 
     /**
@@ -109,8 +117,11 @@ class Endpoint implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'bid' => 'setBid',
-        'sending' => 'setSending'
+        'status' => 'setStatus',
+        'text' => 'setText',
+        'reasonCode' => 'setReasonCode',
+        'checkDate' => 'setCheckDate',
+        'data' => 'setData'
     ];
 
     /**
@@ -119,8 +130,11 @@ class Endpoint implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'bid' => 'getBid',
-        'sending' => 'getSending'
+        'status' => 'getStatus',
+        'text' => 'getText',
+        'reasonCode' => 'getReasonCode',
+        'checkDate' => 'getCheckDate',
+        'data' => 'getData'
     ];
 
     /**
@@ -183,8 +197,11 @@ class Endpoint implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['bid'] = isset($data['bid']) ? $data['bid'] : null;
-        $this->container['sending'] = isset($data['sending']) ? $data['sending'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['reasonCode'] = isset($data['reasonCode']) ? $data['reasonCode'] : null;
+        $this->container['checkDate'] = isset($data['checkDate']) ? $data['checkDate'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -212,49 +229,121 @@ class Endpoint implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets bid
+     * Gets status
      *
      * @return string
      */
-    public function getBid()
+    public function getStatus()
     {
-        return $this->container['bid'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets bid
+     * Sets status
      *
-     * @param string $bid Business ID / Organisation number
+     * @param string $status Analysis result status
      *
      * @return $this
      */
-    public function setBid($bid)
+    public function setStatus($status)
     {
-        $this->container['bid'] = $bid;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets sending
+     * Gets text
      *
-     * @return string[]
+     * @return string
      */
-    public function getSending()
+    public function getText()
     {
-        return $this->container['sending'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets sending
+     * Sets text
      *
-     * @param string[] $sending Available options for sending
+     * @param string $text Analysis result text
      *
      * @return $this
      */
-    public function setSending($sending)
+    public function setText($text)
     {
-        $this->container['sending'] = $sending;
+        $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets reasonCode
+     *
+     * @return string
+     */
+    public function getReasonCode()
+    {
+        return $this->container['reasonCode'];
+    }
+
+    /**
+     * Sets reasonCode
+     *
+     * @param string $reasonCode Analysis result reason code
+     *
+     * @return $this
+     */
+    public function setReasonCode($reasonCode)
+    {
+        $this->container['reasonCode'] = $reasonCode;
+
+        return $this;
+    }
+
+    /**
+     * Gets checkDate
+     *
+     * @return \DateTime
+     */
+    public function getCheckDate()
+    {
+        return $this->container['checkDate'];
+    }
+
+    /**
+     * Sets checkDate
+     *
+     * @param \DateTime $checkDate Timestamp when check was performed
+     *
+     * @return $this
+     */
+    public function setCheckDate($checkDate)
+    {
+        $this->container['checkDate'] = $checkDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return object
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param object $data Analysis metadata
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

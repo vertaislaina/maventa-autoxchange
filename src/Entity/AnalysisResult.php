@@ -1,6 +1,6 @@
 <?php
 /**
- * Endpoint
+ * AnalysisResult
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * Endpoint Class Doc Comment
+ * AnalysisResult Class Doc Comment
  *
  * @category Class
- * @description Fetch sending options for company bid
+ * @description Resource analysis result
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Endpoint implements ModelInterface, ArrayAccess
+class AnalysisResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Endpoint implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Endpoint';
+    protected static $swaggerModelName = 'AnalysisResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,13 @@ class Endpoint implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'bid' => 'string',
-        'sending' => 'string[]'
+        'analysisId' => 'string',
+        'analysisType' => 'string',
+        'analysisStatus' => 'string',
+        'analysisTitle' => 'string',
+        'analysisTriggerDate' => '\DateTime',
+        'analysisOrigin' => 'string',
+        'analysisResult' => '\Vertaislaina\Maventa\AutoXChange\Entity\AnalysisResultInfo'
     ];
 
     /**
@@ -68,8 +73,13 @@ class Endpoint implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'bid' => null,
-        'sending' => null
+        'analysisId' => null,
+        'analysisType' => null,
+        'analysisStatus' => null,
+        'analysisTitle' => null,
+        'analysisTriggerDate' => 'date-time',
+        'analysisOrigin' => null,
+        'analysisResult' => null
     ];
 
     /**
@@ -99,8 +109,13 @@ class Endpoint implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'bid' => 'bid',
-        'sending' => 'sending'
+        'analysisId' => 'analysis_id',
+        'analysisType' => 'analysis_type',
+        'analysisStatus' => 'analysis_status',
+        'analysisTitle' => 'analysis_title',
+        'analysisTriggerDate' => 'analysis_trigger_date',
+        'analysisOrigin' => 'analysis_origin',
+        'analysisResult' => 'analysis_result'
     ];
 
     /**
@@ -109,8 +124,13 @@ class Endpoint implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'bid' => 'setBid',
-        'sending' => 'setSending'
+        'analysisId' => 'setAnalysisId',
+        'analysisType' => 'setAnalysisType',
+        'analysisStatus' => 'setAnalysisStatus',
+        'analysisTitle' => 'setAnalysisTitle',
+        'analysisTriggerDate' => 'setAnalysisTriggerDate',
+        'analysisOrigin' => 'setAnalysisOrigin',
+        'analysisResult' => 'setAnalysisResult'
     ];
 
     /**
@@ -119,8 +139,13 @@ class Endpoint implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'bid' => 'getBid',
-        'sending' => 'getSending'
+        'analysisId' => 'getAnalysisId',
+        'analysisType' => 'getAnalysisType',
+        'analysisStatus' => 'getAnalysisStatus',
+        'analysisTitle' => 'getAnalysisTitle',
+        'analysisTriggerDate' => 'getAnalysisTriggerDate',
+        'analysisOrigin' => 'getAnalysisOrigin',
+        'analysisResult' => 'getAnalysisResult'
     ];
 
     /**
@@ -183,8 +208,13 @@ class Endpoint implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['bid'] = isset($data['bid']) ? $data['bid'] : null;
-        $this->container['sending'] = isset($data['sending']) ? $data['sending'] : null;
+        $this->container['analysisId'] = isset($data['analysisId']) ? $data['analysisId'] : null;
+        $this->container['analysisType'] = isset($data['analysisType']) ? $data['analysisType'] : null;
+        $this->container['analysisStatus'] = isset($data['analysisStatus']) ? $data['analysisStatus'] : null;
+        $this->container['analysisTitle'] = isset($data['analysisTitle']) ? $data['analysisTitle'] : null;
+        $this->container['analysisTriggerDate'] = isset($data['analysisTriggerDate']) ? $data['analysisTriggerDate'] : null;
+        $this->container['analysisOrigin'] = isset($data['analysisOrigin']) ? $data['analysisOrigin'] : null;
+        $this->container['analysisResult'] = isset($data['analysisResult']) ? $data['analysisResult'] : null;
     }
 
     /**
@@ -212,49 +242,169 @@ class Endpoint implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets bid
+     * Gets analysisId
      *
      * @return string
      */
-    public function getBid()
+    public function getAnalysisId()
     {
-        return $this->container['bid'];
+        return $this->container['analysisId'];
     }
 
     /**
-     * Sets bid
+     * Sets analysisId
      *
-     * @param string $bid Business ID / Organisation number
+     * @param string $analysisId Analysis status
      *
      * @return $this
      */
-    public function setBid($bid)
+    public function setAnalysisId($analysisId)
     {
-        $this->container['bid'] = $bid;
+        $this->container['analysisId'] = $analysisId;
 
         return $this;
     }
 
     /**
-     * Gets sending
+     * Gets analysisType
      *
-     * @return string[]
+     * @return string
      */
-    public function getSending()
+    public function getAnalysisType()
     {
-        return $this->container['sending'];
+        return $this->container['analysisType'];
     }
 
     /**
-     * Sets sending
+     * Sets analysisType
      *
-     * @param string[] $sending Available options for sending
+     * @param string $analysisType Analysis type
      *
      * @return $this
      */
-    public function setSending($sending)
+    public function setAnalysisType($analysisType)
     {
-        $this->container['sending'] = $sending;
+        $this->container['analysisType'] = $analysisType;
+
+        return $this;
+    }
+
+    /**
+     * Gets analysisStatus
+     *
+     * @return string
+     */
+    public function getAnalysisStatus()
+    {
+        return $this->container['analysisStatus'];
+    }
+
+    /**
+     * Sets analysisStatus
+     *
+     * @param string $analysisStatus Analysis status
+     *
+     * @return $this
+     */
+    public function setAnalysisStatus($analysisStatus)
+    {
+        $this->container['analysisStatus'] = $analysisStatus;
+
+        return $this;
+    }
+
+    /**
+     * Gets analysisTitle
+     *
+     * @return string
+     */
+    public function getAnalysisTitle()
+    {
+        return $this->container['analysisTitle'];
+    }
+
+    /**
+     * Sets analysisTitle
+     *
+     * @param string $analysisTitle Analysis title
+     *
+     * @return $this
+     */
+    public function setAnalysisTitle($analysisTitle)
+    {
+        $this->container['analysisTitle'] = $analysisTitle;
+
+        return $this;
+    }
+
+    /**
+     * Gets analysisTriggerDate
+     *
+     * @return \DateTime
+     */
+    public function getAnalysisTriggerDate()
+    {
+        return $this->container['analysisTriggerDate'];
+    }
+
+    /**
+     * Sets analysisTriggerDate
+     *
+     * @param \DateTime $analysisTriggerDate Timestamp when check was triggered
+     *
+     * @return $this
+     */
+    public function setAnalysisTriggerDate($analysisTriggerDate)
+    {
+        $this->container['analysisTriggerDate'] = $analysisTriggerDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets analysisOrigin
+     *
+     * @return string
+     */
+    public function getAnalysisOrigin()
+    {
+        return $this->container['analysisOrigin'];
+    }
+
+    /**
+     * Sets analysisOrigin
+     *
+     * @param string $analysisOrigin Analysis resource origin
+     *
+     * @return $this
+     */
+    public function setAnalysisOrigin($analysisOrigin)
+    {
+        $this->container['analysisOrigin'] = $analysisOrigin;
+
+        return $this;
+    }
+
+    /**
+     * Gets analysisResult
+     *
+     * @return \Vertaislaina\Maventa\AutoXChange\Entity\AnalysisResultInfo
+     */
+    public function getAnalysisResult()
+    {
+        return $this->container['analysisResult'];
+    }
+
+    /**
+     * Sets analysisResult
+     *
+     * @param \Vertaislaina\Maventa\AutoXChange\Entity\AnalysisResultInfo $analysisResult Result of the analysis
+     *
+     * @return $this
+     */
+    public function setAnalysisResult($analysisResult)
+    {
+        $this->container['analysisResult'] = $analysisResult;
 
         return $this;
     }

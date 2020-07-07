@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **email** | **string** | Email address | [optional] 
 **phone** | **string** | Phone number | [optional] 
 **status** | **string** | Status | 
-**createdAt** | [**\DateTime**](\DateTime.md) | Consumer creation time | [optional] 
+**updatedAt** | [**\DateTime**](\DateTime.md) | Last update time | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
