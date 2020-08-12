@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **getV1Files**
-> \Vertaislaina\Maventa\AutoXChange\Entity\DocumentFile getV1Files($documentId)
+> \Vertaislaina\Maventa\AutoXChange\Entity\DocumentFileInDocument getV1Files($documentId)
 
 
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\DocumentFile**](../Model/DocumentFile.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\DocumentFileInDocument**](../Model/DocumentFileInDocument.md)
 
 ### Authorization
 
