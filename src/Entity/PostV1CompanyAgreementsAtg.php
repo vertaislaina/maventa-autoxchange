@@ -1,6 +1,6 @@
 <?php
 /**
- * InvoiceSenderParty
+ * PostV1CompanyAgreementsAtg
  *
  * PHP version 5
  *
@@ -33,14 +33,15 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * InvoiceSenderParty Class Doc Comment
+ * PostV1CompanyAgreementsAtg Class Doc Comment
  *
  * @category Class
+ * @description Create a new ATG agreement
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InvoiceSenderParty implements ModelInterface, ArrayAccess
+class PostV1CompanyAgreementsAtg implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class InvoiceSenderParty implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'InvoiceSenderParty';
+    protected static $swaggerModelName = 'postV1CompanyAgreementsAtg';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +58,12 @@ class InvoiceSenderParty implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'eia' => 'string',
-        'bid' => 'string',
-        'name' => 'string',
-        'country' => 'string'
+        'accountNumber' => 'string',
+        'kidLength' => 'int',
+        'referencePosition' => 'string',
+        'paymentTypePosition' => 'string',
+        'notificationByPrint' => 'bool',
+        'notificationByEmail' => 'bool'
     ];
 
     /**
@@ -69,10 +72,12 @@ class InvoiceSenderParty implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'eia' => null,
-        'bid' => null,
-        'name' => null,
-        'country' => null
+        'accountNumber' => null,
+        'kidLength' => 'int32',
+        'referencePosition' => null,
+        'paymentTypePosition' => null,
+        'notificationByPrint' => null,
+        'notificationByEmail' => null
     ];
 
     /**
@@ -102,10 +107,12 @@ class InvoiceSenderParty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'eia' => 'eia',
-        'bid' => 'bid',
-        'name' => 'name',
-        'country' => 'country'
+        'accountNumber' => 'account_number',
+        'kidLength' => 'kid_length',
+        'referencePosition' => 'reference_position',
+        'paymentTypePosition' => 'payment_type_position',
+        'notificationByPrint' => 'notification_by_print',
+        'notificationByEmail' => 'notification_by_email'
     ];
 
     /**
@@ -114,10 +121,12 @@ class InvoiceSenderParty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'eia' => 'setEia',
-        'bid' => 'setBid',
-        'name' => 'setName',
-        'country' => 'setCountry'
+        'accountNumber' => 'setAccountNumber',
+        'kidLength' => 'setKidLength',
+        'referencePosition' => 'setReferencePosition',
+        'paymentTypePosition' => 'setPaymentTypePosition',
+        'notificationByPrint' => 'setNotificationByPrint',
+        'notificationByEmail' => 'setNotificationByEmail'
     ];
 
     /**
@@ -126,10 +135,12 @@ class InvoiceSenderParty implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'eia' => 'getEia',
-        'bid' => 'getBid',
-        'name' => 'getName',
-        'country' => 'getCountry'
+        'accountNumber' => 'getAccountNumber',
+        'kidLength' => 'getKidLength',
+        'referencePosition' => 'getReferencePosition',
+        'paymentTypePosition' => 'getPaymentTypePosition',
+        'notificationByPrint' => 'getNotificationByPrint',
+        'notificationByEmail' => 'getNotificationByEmail'
     ];
 
     /**
@@ -192,10 +203,12 @@ class InvoiceSenderParty implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['eia'] = isset($data['eia']) ? $data['eia'] : null;
-        $this->container['bid'] = isset($data['bid']) ? $data['bid'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
+        $this->container['accountNumber'] = isset($data['accountNumber']) ? $data['accountNumber'] : null;
+        $this->container['kidLength'] = isset($data['kidLength']) ? $data['kidLength'] : null;
+        $this->container['referencePosition'] = isset($data['referencePosition']) ? $data['referencePosition'] : null;
+        $this->container['paymentTypePosition'] = isset($data['paymentTypePosition']) ? $data['paymentTypePosition'] : null;
+        $this->container['notificationByPrint'] = isset($data['notificationByPrint']) ? $data['notificationByPrint'] : null;
+        $this->container['notificationByEmail'] = isset($data['notificationByEmail']) ? $data['notificationByEmail'] : null;
     }
 
     /**
@@ -207,6 +220,18 @@ class InvoiceSenderParty implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['accountNumber'] === null) {
+            $invalidProperties[] = "'accountNumber' can't be null";
+        }
+        if ($this->container['kidLength'] === null) {
+            $invalidProperties[] = "'kidLength' can't be null";
+        }
+        if ($this->container['referencePosition'] === null) {
+            $invalidProperties[] = "'referencePosition' can't be null";
+        }
+        if ($this->container['paymentTypePosition'] === null) {
+            $invalidProperties[] = "'paymentTypePosition' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -223,97 +248,145 @@ class InvoiceSenderParty implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets eia
+     * Gets accountNumber
      *
      * @return string
      */
-    public function getEia()
+    public function getAccountNumber()
     {
-        return $this->container['eia'];
+        return $this->container['accountNumber'];
     }
 
     /**
-     * Sets eia
+     * Sets accountNumber
      *
-     * @param string $eia Electronic Identifier Address
+     * @param string $accountNumber Account number linked to agreement
      *
      * @return $this
      */
-    public function setEia($eia)
+    public function setAccountNumber($accountNumber)
     {
-        $this->container['eia'] = $eia;
+        $this->container['accountNumber'] = $accountNumber;
 
         return $this;
     }
 
     /**
-     * Gets bid
+     * Gets kidLength
      *
-     * @return string
+     * @return int
      */
-    public function getBid()
+    public function getKidLength()
     {
-        return $this->container['bid'];
+        return $this->container['kidLength'];
     }
 
     /**
-     * Sets bid
+     * Sets kidLength
      *
-     * @param string $bid Business ID / Organisation number
+     * @param int $kidLength Length of KID
      *
      * @return $this
      */
-    public function setBid($bid)
+    public function setKidLength($kidLength)
     {
-        $this->container['bid'] = $bid;
+        $this->container['kidLength'] = $kidLength;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets referencePosition
      *
      * @return string
      */
-    public function getName()
+    public function getReferencePosition()
     {
-        return $this->container['name'];
+        return $this->container['referencePosition'];
     }
 
     /**
-     * Sets name
+     * Sets referencePosition
      *
-     * @param string $name Name of party
+     * @param string $referencePosition The reference position in the KID
      *
      * @return $this
      */
-    public function setName($name)
+    public function setReferencePosition($referencePosition)
     {
-        $this->container['name'] = $name;
+        $this->container['referencePosition'] = $referencePosition;
 
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets paymentTypePosition
      *
      * @return string
      */
-    public function getCountry()
+    public function getPaymentTypePosition()
     {
-        return $this->container['country'];
+        return $this->container['paymentTypePosition'];
     }
 
     /**
-     * Sets country
+     * Sets paymentTypePosition
      *
-     * @param string $country Two letter country code of the party
+     * @param string $paymentTypePosition The payment type position in the KID
      *
      * @return $this
      */
-    public function setCountry($country)
+    public function setPaymentTypePosition($paymentTypePosition)
     {
-        $this->container['country'] = $country;
+        $this->container['paymentTypePosition'] = $paymentTypePosition;
+
+        return $this;
+    }
+
+    /**
+     * Gets notificationByPrint
+     *
+     * @return bool
+     */
+    public function getNotificationByPrint()
+    {
+        return $this->container['notificationByPrint'];
+    }
+
+    /**
+     * Sets notificationByPrint
+     *
+     * @param bool $notificationByPrint Send notification about ATG invoice by print
+     *
+     * @return $this
+     */
+    public function setNotificationByPrint($notificationByPrint)
+    {
+        $this->container['notificationByPrint'] = $notificationByPrint;
+
+        return $this;
+    }
+
+    /**
+     * Gets notificationByEmail
+     *
+     * @return bool
+     */
+    public function getNotificationByEmail()
+    {
+        return $this->container['notificationByEmail'];
+    }
+
+    /**
+     * Sets notificationByEmail
+     *
+     * @param bool $notificationByEmail Send notification about ATG invoice by email
+     *
+     * @return $this
+     */
+    public function setNotificationByEmail($notificationByEmail)
+    {
+        $this->container['notificationByEmail'] = $notificationByEmail;
 
         return $this;
     }

@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteV1CompanyNotificationsId**](CompanyApi.md#deleteV1CompanyNotificationsId) | **DELETE** /v1/company/notifications/{id} | Delete a specific notification subscription
 [**deleteV1CompanyProfilesId**](CompanyApi.md#deleteV1CompanyProfilesId) | **DELETE** /v1/company/profiles/{id} | Delete a network registration
+[**getV1CompanyAgreementsAtg**](CompanyApi.md#getV1CompanyAgreementsAtg) | **GET** /v1/company/agreements/atg | List ATG agreements
+[**getV1CompanyAgreementsAtgAccountNumber**](CompanyApi.md#getV1CompanyAgreementsAtgAccountNumber) | **GET** /v1/company/agreements/atg/{account_number} | Fetch ATG agreement
 [**getV1CompanyConsumers**](CompanyApi.md#getV1CompanyConsumers) | **GET** /v1/company/consumers | List B2C Consumers
 [**getV1CompanyMandates**](CompanyApi.md#getV1CompanyMandates) | **GET** /v1/company/mandates | List B2C ATG mandates
 [**getV1CompanyNotifications**](CompanyApi.md#getV1CompanyNotifications) | **GET** /v1/company/notifications | List notification subscriptions
@@ -13,8 +15,10 @@ Method | HTTP request | Description
 [**getV1CompanyProfiles**](CompanyApi.md#getV1CompanyProfiles) | **GET** /v1/company/profiles | List network registrations
 [**getV1CompanyProfilesId**](CompanyApi.md#getV1CompanyProfilesId) | **GET** /v1/company/profiles/{id} | Fetch a network registration
 [**getV1CompanySettings**](CompanyApi.md#getV1CompanySettings) | **GET** /v1/company/settings | Fetch company settings
+[**patchV1CompanyAgreementsAtgAccountNumber**](CompanyApi.md#patchV1CompanyAgreementsAtgAccountNumber) | **PATCH** /v1/company/agreements/atg/{account_number} | Update existing ATG agreement
 [**patchV1CompanyProfilesId**](CompanyApi.md#patchV1CompanyProfilesId) | **PATCH** /v1/company/profiles/{id} | Update a network registration
 [**patchV1CompanySettings**](CompanyApi.md#patchV1CompanySettings) | **PATCH** /v1/company/settings | Modify company settings
+[**postV1CompanyAgreementsAtg**](CompanyApi.md#postV1CompanyAgreementsAtg) | **POST** /v1/company/agreements/atg | Create a new ATG agreement
 [**postV1CompanyNotifications**](CompanyApi.md#postV1CompanyNotifications) | **POST** /v1/company/notifications | Create new notification subscription
 [**postV1CompanyProfiles**](CompanyApi.md#postV1CompanyProfiles) | **POST** /v1/company/profiles | Create network registration request
 
@@ -111,6 +115,108 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getV1CompanyAgreementsAtg**
+> \Vertaislaina\Maventa\AutoXChange\Entity\Atg[] getV1CompanyAgreementsAtg()
+
+List ATG agreements
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getV1CompanyAgreementsAtg();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->getV1CompanyAgreementsAtg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Vertaislaina\Maventa\AutoXChange\Entity\Atg[]**](../Model/Atg.md)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getV1CompanyAgreementsAtgAccountNumber**
+> \Vertaislaina\Maventa\AutoXChange\Entity\Atg getV1CompanyAgreementsAtgAccountNumber($accountNumber)
+
+Fetch ATG agreement
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$accountNumber = "accountNumber_example"; // string | Account number
+
+try {
+    $result = $apiInstance->getV1CompanyAgreementsAtgAccountNumber($accountNumber);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->getV1CompanyAgreementsAtgAccountNumber: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountNumber** | **string**| Account number |
+
+### Return type
+
+[**\Vertaislaina\Maventa\AutoXChange\Entity\Atg**](../Model/Atg.md)
 
 ### Authorization
 
@@ -508,6 +614,61 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **patchV1CompanyAgreementsAtgAccountNumber**
+> \Vertaislaina\Maventa\AutoXChange\Entity\Atg patchV1CompanyAgreementsAtgAccountNumber($accountNumber, $v1CompanyAgreementsAtg)
+
+Update existing ATG agreement
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$accountNumber = "accountNumber_example"; // string | Account number linked to agreement
+$v1CompanyAgreementsAtg = new \Vertaislaina\Maventa\AutoXChange\Entity\PatchV1CompanyAgreementsAtg(); // \Vertaislaina\Maventa\AutoXChange\Entity\PatchV1CompanyAgreementsAtg | 
+
+try {
+    $result = $apiInstance->patchV1CompanyAgreementsAtgAccountNumber($accountNumber, $v1CompanyAgreementsAtg);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->patchV1CompanyAgreementsAtgAccountNumber: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountNumber** | **string**| Account number linked to agreement |
+ **v1CompanyAgreementsAtg** | [**\Vertaislaina\Maventa\AutoXChange\Entity\PatchV1CompanyAgreementsAtg**](../Model/PatchV1CompanyAgreementsAtg.md)|  |
+
+### Return type
+
+[**\Vertaislaina\Maventa\AutoXChange\Entity\Atg**](../Model/Atg.md)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **patchV1CompanyProfilesId**
 > patchV1CompanyProfilesId($id, $v1CompanyProfiles)
 
@@ -567,7 +728,7 @@ void (empty response body)
 
 Modify company settings
 
-### Company checks  Currently supported on_invoice_receive checks: SUPPLIER_ACTIVATION, SENDER_BID_STATUS, VAT  ``` {   \"checks\": {     \"on_invoice_receive\": [       \"SUPPLIER_ACTIVATION\"     ]   } } ```   ### Company logos  ``` {   \"logos\": {   } } ```   ### Company general settings  ``` {   \"send_invoice_general\": {     \"hold_multiple_recipients\": false,     \"stop_duplicate_numbers\": false   } } ```   ### Company invoice print settings  ``` {   \"send_invoice_print\": {     \"enabled\": false,     \"letter_class\": \"ECONOMY\",     \"color_scheme\": \"BLACK_AND_WHITE\",     \"attachment_print\": false,     \"marketing_page\": false,     \"use_own_pdf\": false   } } ```   ### Company details  ``` {   \"details\": {     \"name\": \"My Company Ltd\",     \"email\": \"info@company.com\",     \"website\": \"https://my.company.com\"   } } ```  ### Company address  ``` {   \"address\": {     \"street_address\": \"My street 1\",     \"post_code\": \"123456\",     \"post_office\": \"Oslo\",     \"city\": \"Oslo\",     \"country\": \"NO\"   } } ```    ### Company send invoice email related settings  ``` {   \"send_invoice_email\": {     \"enabled\": true,     \"how_to_send\": \"EMBEDDED | WITH_OBJECTIONS | WITH_LINK (only if enabled is true)\",     \"reminder_frequency\": 4,     \"content_data\": {       \"note_to_receiver\": \"A message added to the receiver\",       \"contact\": {         \"email\": \"invoices@company.com (this is validated by sending a link email to the email)\",         \"name\": \"Info User\",         \"phone\": \"+555 55 555 5555\"       }     }   } } ```   ### Company invoice notification settings  ``` {   \"invoice_notifications\": {     \"on_receiving\": {       \"enabled\": true,       \"how_to_send\": \"OTHER_EMAIL\",       \"other_email\": \"info@company.com\"     },     \"on_send_errors\": {       \"to_user\": true,       \"to_emails\": [         \"info@company.com\"       ]     }   } } ```   ### Landbrukets Dataflyt settings for the accounting company  To enable the receiving of invoices from Landbrukets Dataflyt the accounting company has to provide it's credentials to the Dataflyt registry.  Example of request body for setting the Dataflyt credentials:  ``` {   \"dataflyt\": {     \"username\": \"username\",     \"password\": \"password\"   } } ```   ### Landbrukets Dataflyt settings for the farmer  To enable an accounting company to start receiving invoices on behaf of the farmer, the farmer company has to create a link between itself and the accounting company. The user that creates the link has to be a user in both the farmers company and the accounting office company. Example of request body for setting the Dataflyt credentials:  ``` {   \"dataflyt_link\": {     \"acc_company_id\": \"6188bbc2-46e3-4117-9059-bc095dca7e99\",     \"orgnumber\": \"123456789\"   } } ```  It's also possible to set or change the ```dataflyt_id``` used for fetching the invoices, by providing the value in the request.  ``` {   \"dataflyt_link\": {     \"acc_company_id\": \"9a41a7c5-063e-45bd-82b4-091ac0b9260e\",     \"orgnumber\": \"123456789\",     \"dataflyt_id\": 2000   } } ```  To disable the receiving of self billing invoices the link between the farmers company and the accounting company has to be reset.  ``` {   \"dataflyt_link\": {     \"acc_company_id\": null   } } ```
+### Company checks  Currently supported on_invoice_receive checks: SUPPLIER_ACTIVATION, SENDER_BID_STATUS, VAT  ``` {   \"checks\": {     \"on_invoice_receive\": [       \"SUPPLIER_ACTIVATION\"     ]   } } ```   ### Company logos  ``` {   \"logos\": {   } } ```   ### Company general settings  ``` {   \"send_invoice_general\": {     \"hold_multiple_recipients\": false,     \"stop_duplicate_numbers\": false   } } ```   ### Company invoice print settings  ``` {   \"send_invoice_print\": {     \"enabled\": false,     \"letter_class\": \"ECONOMY\",     \"color_scheme\": \"BLACK_AND_WHITE\",     \"attachment_print\": false,     \"marketing_page\": false,     \"use_own_pdf\": false   } } ```   ### Company details  ``` {   \"details\": {     \"name\": \"My Company Ltd\",     \"email\": \"info@company.com\",     \"website\": \"https://my.company.com\"   } } ```  ### Company address  ``` {   \"address\": {     \"street_address\": \"My street 1\",     \"post_code\": \"123456\",     \"post_office\": \"Oslo\",     \"city\": \"Oslo\",     \"country\": \"NO\"   } } ```    ### Company send invoice email related settings  ``` {   \"send_invoice_email\": {     \"enabled\": true,     \"how_to_send\": \"EMBEDDED | WITH_OBJECTIONS | WITH_LINK (only if enabled is true)\",     \"reminder_frequency\": 4,     \"content_data\": {       \"note_to_receiver\": \"A message added to the receiver\",       \"contact\": {         \"email\": \"invoices@company.com (this is validated by sending a link email to the email)\",         \"name\": \"Info User\",         \"phone\": \"+555 55 555 5555\"       }     }   } } ```   ### Company invoice notification settings  ``` {   \"invoice_notifications\": {     \"on_receiving\": {       \"enabled\": true,       \"how_to_send\": \"OTHER_EMAIL\",       \"other_email\": \"info@company.com\"     },     \"on_send_errors\": {       \"to_user\": true,       \"to_emails\": [         \"info@company.com\"       ]     }   } } ```   ### Landbrukets Dataflyt settings for the accounting company  To enable the receiving of invoices from Landbrukets Dataflyt the accounting company has to provide it's credentials to the Dataflyt registry.  Example of request body for setting the Dataflyt credentials:  ``` {   \"dataflyt\": {     \"username\": \"username\",     \"password\": \"password\"   } } ```   ### Landbrukets Dataflyt settings for the farmer  To enable an accounting company to start receiving invoices on behaf of the farmer, the farmer company has to create a link between itself and the accounting company. The user that creates the link has to be a user in both the farmers company and the accounting office company. Example of request body for setting the Dataflyt credentials:  ``` {   \"dataflyt_link\": {     \"acc_company_id\": \"d678cf57-8b00-4bfd-aa1b-0c65e8f78c4f\",     \"orgnumber\": \"123456789\"   } } ```  It's also possible to set or change the ```dataflyt_id``` used for fetching the invoices, by providing the value in the request.  ``` {   \"dataflyt_link\": {     \"acc_company_id\": \"7407a54b-dcc0-43c7-a231-42daa4e1f447\",     \"orgnumber\": \"123456789\",     \"dataflyt_id\": 2000   } } ```  To disable the receiving of self billing invoices the link between the farmers company and the accounting company has to be reset.  ``` {   \"dataflyt_link\": {     \"acc_company_id\": null   } } ```
 
 ### Example
 ```php
@@ -602,6 +763,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **postV1CompanyAgreementsAtg**
+> \Vertaislaina\Maventa\AutoXChange\Entity\Atg postV1CompanyAgreementsAtg($v1CompanyAgreementsAtg)
+
+Create a new ATG agreement
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$v1CompanyAgreementsAtg = new \Vertaislaina\Maventa\AutoXChange\Entity\PostV1CompanyAgreementsAtg(); // \Vertaislaina\Maventa\AutoXChange\Entity\PostV1CompanyAgreementsAtg | 
+
+try {
+    $result = $apiInstance->postV1CompanyAgreementsAtg($v1CompanyAgreementsAtg);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->postV1CompanyAgreementsAtg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **v1CompanyAgreementsAtg** | [**\Vertaislaina\Maventa\AutoXChange\Entity\PostV1CompanyAgreementsAtg**](../Model/PostV1CompanyAgreementsAtg.md)|  |
+
+### Return type
+
+[**\Vertaislaina\Maventa\AutoXChange\Entity\Atg**](../Model/Atg.md)
 
 ### Authorization
 
