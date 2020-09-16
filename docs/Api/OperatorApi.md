@@ -120,7 +120,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getV1OperatorNotifications**
-> \Vertaislaina\Maventa\AutoXChange\Entity\Notification[] getV1OperatorNotifications()
+> \Vertaislaina\Maventa\AutoXChange\Entity\NotificationsNotification[] getV1OperatorNotifications()
 
 
 
@@ -155,7 +155,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\Notification[]**](../Model/Notification.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\NotificationsNotification[]**](../Model/NotificationsNotification.md)
 
 ### Authorization
 
@@ -169,7 +169,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getV1OperatorNotificationsId**
-> \Vertaislaina\Maventa\AutoXChange\Entity\Notification getV1OperatorNotificationsId($id)
+> \Vertaislaina\Maventa\AutoXChange\Entity\NotificationsNotification getV1OperatorNotificationsId($id)
 
 
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\Notification**](../Model/Notification.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\NotificationsNotification**](../Model/NotificationsNotification.md)
 
 ### Authorization
 
@@ -390,7 +390,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postV1OperatorNotifications**
-> \Vertaislaina\Maventa\AutoXChange\Entity\Notification postV1OperatorNotifications($v1OperatorNotifications)
+> \Vertaislaina\Maventa\AutoXChange\Entity\NotificationsNotification postV1OperatorNotifications($v1OperatorNotifications)
 
 
 
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\Notification**](../Model/Notification.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\NotificationsNotification**](../Model/NotificationsNotification.md)
 
 ### Authorization
 
