@@ -35,7 +35,7 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\DocumentsApi(
     $config
 );
 $direction = "direction_example"; // string | Received or sent documents
-$type = array("type_example"); // string[] | List of document types.                                                     Possible values: UNKNOWN, INVOICE, CREDIT_NOTE, ORDER, ORDER_RESPONSE, CATALOGUE, CATALOGUE_RESPONSE, SELF_BILLING_INVOICE, DESPATCH_ADVICE, RECEIPT, VOUCHER, BANK_FILE, REMINDER, EXPRESSION_OF_INTEREST_REQUEST, EXPRESSION_OF_INTEREST_RESPONSE, TENDER_STATUS_REQUEST, CALL_FOR_TENDERS, TENDER, TENDER_RECEIPT
+$type = array("type_example"); // string[] | List of document types.                                                     Possible values: UNKNOWN, INVOICE, CREDIT_NOTE, ORDER, ORDER_RESPONSE, CATALOGUE, CATALOGUE_RESPONSE, SELF_BILLING_INVOICE, DESPATCH_ADVICE, RECEIPT, VOUCHER, BANK_FILE, REMINDER, SCAN, EXPRESSION_OF_INTEREST_REQUEST, EXPRESSION_OF_INTEREST_RESPONSE, TENDER_STATUS_REQUEST, CALL_FOR_TENDERS, TENDER, TENDER_RECEIPT
 $status = array("status_example"); // string[] | List of document states.                                                     Possible values: PROCESSING, DELIVERED, CONFIRMED_DELIVERY, FAILED
 $createdAtStart = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Creation time
 $createdAtEnd = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Creation time
@@ -61,7 +61,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **direction** | **string**| Received or sent documents | [optional]
- **type** | [**string[]**](../Model/string.md)| List of document types.                                                     Possible values: UNKNOWN, INVOICE, CREDIT_NOTE, ORDER, ORDER_RESPONSE, CATALOGUE, CATALOGUE_RESPONSE, SELF_BILLING_INVOICE, DESPATCH_ADVICE, RECEIPT, VOUCHER, BANK_FILE, REMINDER, EXPRESSION_OF_INTEREST_REQUEST, EXPRESSION_OF_INTEREST_RESPONSE, TENDER_STATUS_REQUEST, CALL_FOR_TENDERS, TENDER, TENDER_RECEIPT | [optional]
+ **type** | [**string[]**](../Model/string.md)| List of document types.                                                     Possible values: UNKNOWN, INVOICE, CREDIT_NOTE, ORDER, ORDER_RESPONSE, CATALOGUE, CATALOGUE_RESPONSE, SELF_BILLING_INVOICE, DESPATCH_ADVICE, RECEIPT, VOUCHER, BANK_FILE, REMINDER, SCAN, EXPRESSION_OF_INTEREST_REQUEST, EXPRESSION_OF_INTEREST_RESPONSE, TENDER_STATUS_REQUEST, CALL_FOR_TENDERS, TENDER, TENDER_RECEIPT | [optional]
  **status** | [**string[]**](../Model/string.md)| List of document states.                                                     Possible values: PROCESSING, DELIVERED, CONFIRMED_DELIVERY, FAILED | [optional]
  **createdAtStart** | **\DateTime**| Creation time | [optional]
  **createdAtEnd** | **\DateTime**| Creation time | [optional]
