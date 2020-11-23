@@ -1,6 +1,6 @@
 <?php
 /**
- * OAuthCurrent
+ * CheckDefinition
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * OAuthCurrent Class Doc Comment
+ * CheckDefinition Class Doc Comment
  *
  * @category Class
- * @description 
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class OAuthCurrent implements ModelInterface, ArrayAccess
+class CheckDefinition implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'OAuthCurrent';
+    protected static $swaggerModelName = 'CheckDefinition';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,15 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'user' => '\Vertaislaina\Maventa\AutoXChange\Entity\User',
-        'company' => '\Vertaislaina\Maventa\AutoXChange\Entity\CompanyParty',
-        'scopes' => 'string[]'
+        'name' => 'string',
+        'friendlyName' => 'string',
+        'title' => 'string',
+        'description' => 'string',
+        'docDescription' => 'string',
+        'resourceType' => 'string',
+        'scope' => 'string',
+        'registers' => 'string',
+        'possibleResults' => '\Vertaislaina\Maventa\AutoXChange\Entity\ResultDefinition[]'
     ];
 
     /**
@@ -69,9 +74,15 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'user' => null,
-        'company' => null,
-        'scopes' => null
+        'name' => null,
+        'friendlyName' => null,
+        'title' => null,
+        'description' => null,
+        'docDescription' => null,
+        'resourceType' => null,
+        'scope' => null,
+        'registers' => null,
+        'possibleResults' => null
     ];
 
     /**
@@ -101,9 +112,15 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user' => 'user',
-        'company' => 'company',
-        'scopes' => 'scopes'
+        'name' => 'name',
+        'friendlyName' => 'friendly_name',
+        'title' => 'title',
+        'description' => 'description',
+        'docDescription' => 'doc_description',
+        'resourceType' => 'resource_type',
+        'scope' => 'scope',
+        'registers' => 'registers',
+        'possibleResults' => 'possible_results'
     ];
 
     /**
@@ -112,9 +129,15 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'user' => 'setUser',
-        'company' => 'setCompany',
-        'scopes' => 'setScopes'
+        'name' => 'setName',
+        'friendlyName' => 'setFriendlyName',
+        'title' => 'setTitle',
+        'description' => 'setDescription',
+        'docDescription' => 'setDocDescription',
+        'resourceType' => 'setResourceType',
+        'scope' => 'setScope',
+        'registers' => 'setRegisters',
+        'possibleResults' => 'setPossibleResults'
     ];
 
     /**
@@ -123,9 +146,15 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'user' => 'getUser',
-        'company' => 'getCompany',
-        'scopes' => 'getScopes'
+        'name' => 'getName',
+        'friendlyName' => 'getFriendlyName',
+        'title' => 'getTitle',
+        'description' => 'getDescription',
+        'docDescription' => 'getDocDescription',
+        'resourceType' => 'getResourceType',
+        'scope' => 'getScope',
+        'registers' => 'getRegisters',
+        'possibleResults' => 'getPossibleResults'
     ];
 
     /**
@@ -188,9 +217,15 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['user'] = isset($data['user']) ? $data['user'] : null;
-        $this->container['company'] = isset($data['company']) ? $data['company'] : null;
-        $this->container['scopes'] = isset($data['scopes']) ? $data['scopes'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['friendlyName'] = isset($data['friendlyName']) ? $data['friendlyName'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['docDescription'] = isset($data['docDescription']) ? $data['docDescription'] : null;
+        $this->container['resourceType'] = isset($data['resourceType']) ? $data['resourceType'] : null;
+        $this->container['scope'] = isset($data['scope']) ? $data['scope'] : null;
+        $this->container['registers'] = isset($data['registers']) ? $data['registers'] : null;
+        $this->container['possibleResults'] = isset($data['possibleResults']) ? $data['possibleResults'] : null;
     }
 
     /**
@@ -202,12 +237,6 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['user'] === null) {
-            $invalidProperties[] = "'user' can't be null";
-        }
-        if ($this->container['company'] === null) {
-            $invalidProperties[] = "'company' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -224,73 +253,217 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets user
+     * Gets name
      *
-     * @return \Vertaislaina\Maventa\AutoXChange\Entity\User
+     * @return string
      */
-    public function getUser()
+    public function getName()
     {
-        return $this->container['user'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets user
+     * Sets name
      *
-     * @param \Vertaislaina\Maventa\AutoXChange\Entity\User $user Current user
+     * @param string $name Check name
      *
      * @return $this
      */
-    public function setUser($user)
+    public function setName($name)
     {
-        $this->container['user'] = $user;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets company
+     * Gets friendlyName
      *
-     * @return \Vertaislaina\Maventa\AutoXChange\Entity\CompanyParty
+     * @return string
      */
-    public function getCompany()
+    public function getFriendlyName()
     {
-        return $this->container['company'];
+        return $this->container['friendlyName'];
     }
 
     /**
-     * Sets company
+     * Sets friendlyName
      *
-     * @param \Vertaislaina\Maventa\AutoXChange\Entity\CompanyParty $company Current user company
+     * @param string $friendlyName Check friendly name
      *
      * @return $this
      */
-    public function setCompany($company)
+    public function setFriendlyName($friendlyName)
     {
-        $this->container['company'] = $company;
+        $this->container['friendlyName'] = $friendlyName;
 
         return $this;
     }
 
     /**
-     * Gets scopes
+     * Gets title
      *
-     * @return string[]
+     * @return string
      */
-    public function getScopes()
+    public function getTitle()
     {
-        return $this->container['scopes'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets scopes
+     * Sets title
      *
-     * @param string[] $scopes List of granted scopes
+     * @param string $title Check title
      *
      * @return $this
      */
-    public function setScopes($scopes)
+    public function setTitle($title)
     {
-        $this->container['scopes'] = $scopes;
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string $description Check description
+     *
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets docDescription
+     *
+     * @return string
+     */
+    public function getDocDescription()
+    {
+        return $this->container['docDescription'];
+    }
+
+    /**
+     * Sets docDescription
+     *
+     * @param string $docDescription Check documentation description
+     *
+     * @return $this
+     */
+    public function setDocDescription($docDescription)
+    {
+        $this->container['docDescription'] = $docDescription;
+
+        return $this;
+    }
+
+    /**
+     * Gets resourceType
+     *
+     * @return string
+     */
+    public function getResourceType()
+    {
+        return $this->container['resourceType'];
+    }
+
+    /**
+     * Sets resourceType
+     *
+     * @param string $resourceType Resource type the check is run for
+     *
+     * @return $this
+     */
+    public function setResourceType($resourceType)
+    {
+        $this->container['resourceType'] = $resourceType;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope
+     *
+     * @return string
+     */
+    public function getScope()
+    {
+        return $this->container['scope'];
+    }
+
+    /**
+     * Sets scope
+     *
+     * @param string $scope Resource scope the check is run for
+     *
+     * @return $this
+     */
+    public function setScope($scope)
+    {
+        $this->container['scope'] = $scope;
+
+        return $this;
+    }
+
+    /**
+     * Gets registers
+     *
+     * @return string
+     */
+    public function getRegisters()
+    {
+        return $this->container['registers'];
+    }
+
+    /**
+     * Sets registers
+     *
+     * @param string $registers Registers used for the check to run
+     *
+     * @return $this
+     */
+    public function setRegisters($registers)
+    {
+        $this->container['registers'] = $registers;
+
+        return $this;
+    }
+
+    /**
+     * Gets possibleResults
+     *
+     * @return \Vertaislaina\Maventa\AutoXChange\Entity\ResultDefinition[]
+     */
+    public function getPossibleResults()
+    {
+        return $this->container['possibleResults'];
+    }
+
+    /**
+     * Sets possibleResults
+     *
+     * @param \Vertaislaina\Maventa\AutoXChange\Entity\ResultDefinition[] $possibleResults List of possible results of the check
+     *
+     * @return $this
+     */
+    public function setPossibleResults($possibleResults)
+    {
+        $this->container['possibleResults'] = $possibleResults;
 
         return $this;
     }

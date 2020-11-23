@@ -1,6 +1,6 @@
 <?php
 /**
- * OAuthCurrent
+ * AnalysisResult
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * OAuthCurrent Class Doc Comment
+ * AnalysisResult Class Doc Comment
  *
  * @category Class
- * @description 
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class OAuthCurrent implements ModelInterface, ArrayAccess
+class AnalysisResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'OAuthCurrent';
+    protected static $swaggerModelName = 'AnalysisResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +57,11 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'user' => '\Vertaislaina\Maventa\AutoXChange\Entity\User',
-        'company' => '\Vertaislaina\Maventa\AutoXChange\Entity\CompanyParty',
-        'scopes' => 'string[]'
+        'status' => 'string',
+        'text' => 'string',
+        'reasonCode' => 'string',
+        'checkDate' => '\DateTime',
+        'data' => 'object'
     ];
 
     /**
@@ -69,9 +70,11 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'user' => null,
-        'company' => null,
-        'scopes' => null
+        'status' => null,
+        'text' => null,
+        'reasonCode' => null,
+        'checkDate' => 'date-time',
+        'data' => null
     ];
 
     /**
@@ -101,9 +104,11 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user' => 'user',
-        'company' => 'company',
-        'scopes' => 'scopes'
+        'status' => 'status',
+        'text' => 'text',
+        'reasonCode' => 'reason_code',
+        'checkDate' => 'check_date',
+        'data' => 'data'
     ];
 
     /**
@@ -112,9 +117,11 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'user' => 'setUser',
-        'company' => 'setCompany',
-        'scopes' => 'setScopes'
+        'status' => 'setStatus',
+        'text' => 'setText',
+        'reasonCode' => 'setReasonCode',
+        'checkDate' => 'setCheckDate',
+        'data' => 'setData'
     ];
 
     /**
@@ -123,9 +130,11 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'user' => 'getUser',
-        'company' => 'getCompany',
-        'scopes' => 'getScopes'
+        'status' => 'getStatus',
+        'text' => 'getText',
+        'reasonCode' => 'getReasonCode',
+        'checkDate' => 'getCheckDate',
+        'data' => 'getData'
     ];
 
     /**
@@ -188,9 +197,11 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['user'] = isset($data['user']) ? $data['user'] : null;
-        $this->container['company'] = isset($data['company']) ? $data['company'] : null;
-        $this->container['scopes'] = isset($data['scopes']) ? $data['scopes'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['reasonCode'] = isset($data['reasonCode']) ? $data['reasonCode'] : null;
+        $this->container['checkDate'] = isset($data['checkDate']) ? $data['checkDate'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -202,12 +213,6 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['user'] === null) {
-            $invalidProperties[] = "'user' can't be null";
-        }
-        if ($this->container['company'] === null) {
-            $invalidProperties[] = "'company' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -224,73 +229,121 @@ class OAuthCurrent implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets user
+     * Gets status
      *
-     * @return \Vertaislaina\Maventa\AutoXChange\Entity\User
+     * @return string
      */
-    public function getUser()
+    public function getStatus()
     {
-        return $this->container['user'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets user
+     * Sets status
      *
-     * @param \Vertaislaina\Maventa\AutoXChange\Entity\User $user Current user
+     * @param string $status Analysis result status
      *
      * @return $this
      */
-    public function setUser($user)
+    public function setStatus($status)
     {
-        $this->container['user'] = $user;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets company
+     * Gets text
      *
-     * @return \Vertaislaina\Maventa\AutoXChange\Entity\CompanyParty
+     * @return string
      */
-    public function getCompany()
+    public function getText()
     {
-        return $this->container['company'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets company
+     * Sets text
      *
-     * @param \Vertaislaina\Maventa\AutoXChange\Entity\CompanyParty $company Current user company
+     * @param string $text Analysis result text
      *
      * @return $this
      */
-    public function setCompany($company)
+    public function setText($text)
     {
-        $this->container['company'] = $company;
+        $this->container['text'] = $text;
 
         return $this;
     }
 
     /**
-     * Gets scopes
+     * Gets reasonCode
      *
-     * @return string[]
+     * @return string
      */
-    public function getScopes()
+    public function getReasonCode()
     {
-        return $this->container['scopes'];
+        return $this->container['reasonCode'];
     }
 
     /**
-     * Sets scopes
+     * Sets reasonCode
      *
-     * @param string[] $scopes List of granted scopes
+     * @param string $reasonCode Analysis result reason code
      *
      * @return $this
      */
-    public function setScopes($scopes)
+    public function setReasonCode($reasonCode)
     {
-        $this->container['scopes'] = $scopes;
+        $this->container['reasonCode'] = $reasonCode;
+
+        return $this;
+    }
+
+    /**
+     * Gets checkDate
+     *
+     * @return \DateTime
+     */
+    public function getCheckDate()
+    {
+        return $this->container['checkDate'];
+    }
+
+    /**
+     * Sets checkDate
+     *
+     * @param \DateTime $checkDate Timestamp when check was performed
+     *
+     * @return $this
+     */
+    public function setCheckDate($checkDate)
+    {
+        $this->container['checkDate'] = $checkDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return object
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param object $data Analysis metadata
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

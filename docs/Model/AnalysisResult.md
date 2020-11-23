@@ -1,4 +1,4 @@
-# AnalysisAnalysisResultInfo
+# AnalysisResult
 
 ## Properties
 Name | Type | Description | Notes
