@@ -1,6 +1,6 @@
 <?php
 /**
- * InvoiceFile
+ * OPInvoiceLoanBankDetails
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * InvoiceFile Class Doc Comment
+ * OPInvoiceLoanBankDetails Class Doc Comment
  *
  * @category Class
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InvoiceFile implements ModelInterface, ArrayAccess
+class OPInvoiceLoanBankDetails implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'InvoiceFile';
+    protected static $swaggerModelName = 'OPInvoiceLoanBankDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-        'filename' => 'string',
-        'type' => 'string',
-        'mimetype' => 'string',
-        'href' => 'string'
+        'iban' => 'string',
+        'bic' => 'string'
     ];
 
     /**
@@ -70,11 +67,8 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'filename' => null,
-        'type' => null,
-        'mimetype' => null,
-        'href' => null
+        'iban' => null,
+        'bic' => null
     ];
 
     /**
@@ -104,11 +98,8 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'filename' => 'filename',
-        'type' => 'type',
-        'mimetype' => 'mimetype',
-        'href' => 'href'
+        'iban' => 'iban',
+        'bic' => 'bic'
     ];
 
     /**
@@ -117,11 +108,8 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'filename' => 'setFilename',
-        'type' => 'setType',
-        'mimetype' => 'setMimetype',
-        'href' => 'setHref'
+        'iban' => 'setIban',
+        'bic' => 'setBic'
     ];
 
     /**
@@ -130,11 +118,8 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'filename' => 'getFilename',
-        'type' => 'getType',
-        'mimetype' => 'getMimetype',
-        'href' => 'getHref'
+        'iban' => 'getIban',
+        'bic' => 'getBic'
     ];
 
     /**
@@ -197,11 +182,8 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['filename'] = isset($data['filename']) ? $data['filename'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['mimetype'] = isset($data['mimetype']) ? $data['mimetype'] : null;
-        $this->container['href'] = isset($data['href']) ? $data['href'] : null;
+        $this->container['iban'] = isset($data['iban']) ? $data['iban'] : null;
+        $this->container['bic'] = isset($data['bic']) ? $data['bic'] : null;
     }
 
     /**
@@ -213,9 +195,6 @@ class InvoiceFile implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -232,121 +211,49 @@ class InvoiceFile implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets iban
      *
      * @return string
      */
-    public function getId()
+    public function getIban()
     {
-        return $this->container['id'];
+        return $this->container['iban'];
     }
 
     /**
-     * Sets id
+     * Sets iban
      *
-     * @param string $id Unique ID of the file
+     * @param string $iban OP IBAN to be used on invoices
      *
      * @return $this
      */
-    public function setId($id)
+    public function setIban($iban)
     {
-        $this->container['id'] = $id;
+        $this->container['iban'] = $iban;
 
         return $this;
     }
 
     /**
-     * Gets filename
+     * Gets bic
      *
      * @return string
      */
-    public function getFilename()
+    public function getBic()
     {
-        return $this->container['filename'];
+        return $this->container['bic'];
     }
 
     /**
-     * Sets filename
+     * Sets bic
      *
-     * @param string $filename File name
+     * @param string $bic OP BIC to be used on invoices
      *
      * @return $this
      */
-    public function setFilename($filename)
+    public function setBic($bic)
     {
-        $this->container['filename'] = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type File format
-     *
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets mimetype
-     *
-     * @return string
-     */
-    public function getMimetype()
-    {
-        return $this->container['mimetype'];
-    }
-
-    /**
-     * Sets mimetype
-     *
-     * @param string $mimetype Mime type passed when created or inferred from file extension
-     *
-     * @return $this
-     */
-    public function setMimetype($mimetype)
-    {
-        $this->container['mimetype'] = $mimetype;
-
-        return $this;
-    }
-
-    /**
-     * Gets href
-     *
-     * @return string
-     */
-    public function getHref()
-    {
-        return $this->container['href'];
-    }
-
-    /**
-     * Sets href
-     *
-     * @param string $href Direct link for accesing the file content
-     *
-     * @return $this
-     */
-    public function setHref($href)
-    {
-        $this->container['href'] = $href;
+        $this->container['bic'] = $bic;
 
         return $this;
     }

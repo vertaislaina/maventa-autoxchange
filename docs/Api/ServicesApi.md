@@ -9,9 +9,14 @@ Method | HTTP request | Description
 [**getV1ServicesAtgAccountNumber**](ServicesApi.md#getV1ServicesAtgAccountNumber) | **GET** /v1/services/atg/{account_number} | Fetch ATG agreement
 [**getV1ServicesAtgMandates**](ServicesApi.md#getV1ServicesAtgMandates) | **GET** /v1/services/atg/mandates | List B2C ATG mandates
 [**getV1ServicesB2cnoConsumers**](ServicesApi.md#getV1ServicesB2cnoConsumers) | **GET** /v1/services/b2cno/consumers | List B2CNO Consumers
+[**getV1ServicesOpInvoiceLoan**](ServicesApi.md#getV1ServicesOpInvoiceLoan) | **GET** /v1/services/op_invoice_loan | Current information about the OP Laskulaina service
+[**getV1ServicesOpInvoiceLoanAccountStatement**](ServicesApi.md#getV1ServicesOpInvoiceLoanAccountStatement) | **GET** /v1/services/op_invoice_loan/account_statement | Fetch account statement
+[**getV1ServicesOpInvoiceLoanAvailableCredit**](ServicesApi.md#getV1ServicesOpInvoiceLoanAvailableCredit) | **GET** /v1/services/op_invoice_loan/available_credit | Check the credit balance
 [**getV1ServicesReceivables**](ServicesApi.md#getV1ServicesReceivables) | **GET** /v1/services/receivables | Current state of the receivables service
 [**patchV1ServicesAtgAccountNumber**](ServicesApi.md#patchV1ServicesAtgAccountNumber) | **PATCH** /v1/services/atg/{account_number} | Update existing ATG agreement
 [**postV1ServicesAtg**](ServicesApi.md#postV1ServicesAtg) | **POST** /v1/services/atg | Create a new ATG agreement
+[**postV1ServicesOpInvoiceLoanWithdrawal**](ServicesApi.md#postV1ServicesOpInvoiceLoanWithdrawal) | **POST** /v1/services/op_invoice_loan/withdrawal | Make a withdrawal
+[**putV1ServicesOpInvoiceLoan**](ServicesApi.md#putV1ServicesOpInvoiceLoan) | **PUT** /v1/services/op_invoice_loan | Start the OP Laskulaina onboarding
 [**putV1ServicesReceivables**](ServicesApi.md#putV1ServicesReceivables) | **PUT** /v1/services/receivables | Start the Receivables service onboarding
 
 
@@ -287,6 +292,156 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getV1ServicesOpInvoiceLoan**
+> \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoan getV1ServicesOpInvoiceLoan()
+
+Current information about the OP Laskulaina service
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getV1ServicesOpInvoiceLoan();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ServicesApi->getV1ServicesOpInvoiceLoan: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoan**](../Model/OPInvoiceLoan.md)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getV1ServicesOpInvoiceLoanAccountStatement**
+> getV1ServicesOpInvoiceLoanAccountStatement($day)
+
+Fetch account statement
+
+Returns the account statement per day in SEPA XML format
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$day = new \DateTime("2013-10-20"); // \DateTime | Date for which to fetch transactions
+
+try {
+    $apiInstance->getV1ServicesOpInvoiceLoanAccountStatement($day);
+} catch (Exception $e) {
+    echo 'Exception when calling ServicesApi->getV1ServicesOpInvoiceLoanAccountStatement: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **day** | **\DateTime**| Date for which to fetch transactions |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getV1ServicesOpInvoiceLoanAvailableCredit**
+> \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoanAvailableCredit getV1ServicesOpInvoiceLoanAvailableCredit()
+
+Check the credit balance
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getV1ServicesOpInvoiceLoanAvailableCredit();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ServicesApi->getV1ServicesOpInvoiceLoanAvailableCredit: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoanAvailableCredit**](../Model/OPInvoiceLoanAvailableCredit.md)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getV1ServicesReceivables**
 > \Vertaislaina\Maventa\AutoXChange\Entity\ReceivablesService getV1ServicesReceivables()
 
@@ -431,6 +586,111 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Vertaislaina\Maventa\AutoXChange\Entity\CompanyAgreementsAtg**](../Model/CompanyAgreementsAtg.md)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **postV1ServicesOpInvoiceLoanWithdrawal**
+> postV1ServicesOpInvoiceLoanWithdrawal($v1ServicesOpInvoiceLoanWithdrawal)
+
+Make a withdrawal
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$v1ServicesOpInvoiceLoanWithdrawal = new \Vertaislaina\Maventa\AutoXChange\Entity\PostV1ServicesOpInvoiceLoanWithdrawal(); // \Vertaislaina\Maventa\AutoXChange\Entity\PostV1ServicesOpInvoiceLoanWithdrawal | 
+
+try {
+    $apiInstance->postV1ServicesOpInvoiceLoanWithdrawal($v1ServicesOpInvoiceLoanWithdrawal);
+} catch (Exception $e) {
+    echo 'Exception when calling ServicesApi->postV1ServicesOpInvoiceLoanWithdrawal: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **v1ServicesOpInvoiceLoanWithdrawal** | [**\Vertaislaina\Maventa\AutoXChange\Entity\PostV1ServicesOpInvoiceLoanWithdrawal**](../Model/PostV1ServicesOpInvoiceLoanWithdrawal.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[company_auth](../../README.md#company_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **putV1ServicesOpInvoiceLoan**
+> \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoan putV1ServicesOpInvoiceLoan($v1ServicesOpInvoiceLoan)
+
+Start the OP Laskulaina onboarding
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: company_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$v1ServicesOpInvoiceLoan = new \Vertaislaina\Maventa\AutoXChange\Entity\PutV1ServicesOpInvoiceLoan(); // \Vertaislaina\Maventa\AutoXChange\Entity\PutV1ServicesOpInvoiceLoan | 
+
+try {
+    $result = $apiInstance->putV1ServicesOpInvoiceLoan($v1ServicesOpInvoiceLoan);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ServicesApi->putV1ServicesOpInvoiceLoan: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **v1ServicesOpInvoiceLoan** | [**\Vertaislaina\Maventa\AutoXChange\Entity\PutV1ServicesOpInvoiceLoan**](../Model/PutV1ServicesOpInvoiceLoan.md)|  |
+
+### Return type
+
+[**\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoan**](../Model/OPInvoiceLoan.md)
 
 ### Authorization
 

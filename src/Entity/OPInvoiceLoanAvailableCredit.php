@@ -1,6 +1,6 @@
 <?php
 /**
- * InvoiceFile
+ * OPInvoiceLoanAvailableCredit
  *
  * PHP version 5
  *
@@ -33,14 +33,15 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * InvoiceFile Class Doc Comment
+ * OPInvoiceLoanAvailableCredit Class Doc Comment
  *
  * @category Class
+ * @description 
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InvoiceFile implements ModelInterface, ArrayAccess
+class OPInvoiceLoanAvailableCredit implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'InvoiceFile';
+    protected static $swaggerModelName = 'OPInvoiceLoanAvailableCredit';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +58,13 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-        'filename' => 'string',
-        'type' => 'string',
-        'mimetype' => 'string',
-        'href' => 'string'
+        'availableCreditAmount' => 'float',
+        'currency' => 'string',
+        'currentMonthInterest' => 'float',
+        'interestBalance' => 'float',
+        'maxCreditAmount' => 'float',
+        'totalCollateralAmount' => 'float',
+        'totalWithdrawn' => 'float'
     ];
 
     /**
@@ -70,11 +73,13 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'filename' => null,
-        'type' => null,
-        'mimetype' => null,
-        'href' => null
+        'availableCreditAmount' => 'float',
+        'currency' => null,
+        'currentMonthInterest' => 'float',
+        'interestBalance' => 'float',
+        'maxCreditAmount' => 'float',
+        'totalCollateralAmount' => 'float',
+        'totalWithdrawn' => 'float'
     ];
 
     /**
@@ -104,11 +109,13 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'filename' => 'filename',
-        'type' => 'type',
-        'mimetype' => 'mimetype',
-        'href' => 'href'
+        'availableCreditAmount' => 'available_credit_amount',
+        'currency' => 'currency',
+        'currentMonthInterest' => 'current_month_interest',
+        'interestBalance' => 'interest_balance',
+        'maxCreditAmount' => 'max_credit_amount',
+        'totalCollateralAmount' => 'total_collateral_amount',
+        'totalWithdrawn' => 'total_withdrawn'
     ];
 
     /**
@@ -117,11 +124,13 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'filename' => 'setFilename',
-        'type' => 'setType',
-        'mimetype' => 'setMimetype',
-        'href' => 'setHref'
+        'availableCreditAmount' => 'setAvailableCreditAmount',
+        'currency' => 'setCurrency',
+        'currentMonthInterest' => 'setCurrentMonthInterest',
+        'interestBalance' => 'setInterestBalance',
+        'maxCreditAmount' => 'setMaxCreditAmount',
+        'totalCollateralAmount' => 'setTotalCollateralAmount',
+        'totalWithdrawn' => 'setTotalWithdrawn'
     ];
 
     /**
@@ -130,11 +139,13 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'filename' => 'getFilename',
-        'type' => 'getType',
-        'mimetype' => 'getMimetype',
-        'href' => 'getHref'
+        'availableCreditAmount' => 'getAvailableCreditAmount',
+        'currency' => 'getCurrency',
+        'currentMonthInterest' => 'getCurrentMonthInterest',
+        'interestBalance' => 'getInterestBalance',
+        'maxCreditAmount' => 'getMaxCreditAmount',
+        'totalCollateralAmount' => 'getTotalCollateralAmount',
+        'totalWithdrawn' => 'getTotalWithdrawn'
     ];
 
     /**
@@ -197,11 +208,13 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['filename'] = isset($data['filename']) ? $data['filename'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['mimetype'] = isset($data['mimetype']) ? $data['mimetype'] : null;
-        $this->container['href'] = isset($data['href']) ? $data['href'] : null;
+        $this->container['availableCreditAmount'] = isset($data['availableCreditAmount']) ? $data['availableCreditAmount'] : null;
+        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['currentMonthInterest'] = isset($data['currentMonthInterest']) ? $data['currentMonthInterest'] : null;
+        $this->container['interestBalance'] = isset($data['interestBalance']) ? $data['interestBalance'] : null;
+        $this->container['maxCreditAmount'] = isset($data['maxCreditAmount']) ? $data['maxCreditAmount'] : null;
+        $this->container['totalCollateralAmount'] = isset($data['totalCollateralAmount']) ? $data['totalCollateralAmount'] : null;
+        $this->container['totalWithdrawn'] = isset($data['totalWithdrawn']) ? $data['totalWithdrawn'] : null;
     }
 
     /**
@@ -213,9 +226,6 @@ class InvoiceFile implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -232,121 +242,169 @@ class InvoiceFile implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets availableCreditAmount
      *
-     * @return string
+     * @return float
      */
-    public function getId()
+    public function getAvailableCreditAmount()
     {
-        return $this->container['id'];
+        return $this->container['availableCreditAmount'];
     }
 
     /**
-     * Sets id
+     * Sets availableCreditAmount
      *
-     * @param string $id Unique ID of the file
+     * @param float $availableCreditAmount availableCreditAmount
      *
      * @return $this
      */
-    public function setId($id)
+    public function setAvailableCreditAmount($availableCreditAmount)
     {
-        $this->container['id'] = $id;
+        $this->container['availableCreditAmount'] = $availableCreditAmount;
 
         return $this;
     }
 
     /**
-     * Gets filename
+     * Gets currency
      *
      * @return string
      */
-    public function getFilename()
+    public function getCurrency()
     {
-        return $this->container['filename'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets filename
+     * Sets currency
      *
-     * @param string $filename File name
+     * @param string $currency currency
      *
      * @return $this
      */
-    public function setFilename($filename)
+    public function setCurrency($currency)
     {
-        $this->container['filename'] = $filename;
+        $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets currentMonthInterest
      *
-     * @return string
+     * @return float
      */
-    public function getType()
+    public function getCurrentMonthInterest()
     {
-        return $this->container['type'];
+        return $this->container['currentMonthInterest'];
     }
 
     /**
-     * Sets type
+     * Sets currentMonthInterest
      *
-     * @param string $type File format
+     * @param float $currentMonthInterest currentMonthInterest
      *
      * @return $this
      */
-    public function setType($type)
+    public function setCurrentMonthInterest($currentMonthInterest)
     {
-        $this->container['type'] = $type;
+        $this->container['currentMonthInterest'] = $currentMonthInterest;
 
         return $this;
     }
 
     /**
-     * Gets mimetype
+     * Gets interestBalance
      *
-     * @return string
+     * @return float
      */
-    public function getMimetype()
+    public function getInterestBalance()
     {
-        return $this->container['mimetype'];
+        return $this->container['interestBalance'];
     }
 
     /**
-     * Sets mimetype
+     * Sets interestBalance
      *
-     * @param string $mimetype Mime type passed when created or inferred from file extension
+     * @param float $interestBalance interestBalance
      *
      * @return $this
      */
-    public function setMimetype($mimetype)
+    public function setInterestBalance($interestBalance)
     {
-        $this->container['mimetype'] = $mimetype;
+        $this->container['interestBalance'] = $interestBalance;
 
         return $this;
     }
 
     /**
-     * Gets href
+     * Gets maxCreditAmount
      *
-     * @return string
+     * @return float
      */
-    public function getHref()
+    public function getMaxCreditAmount()
     {
-        return $this->container['href'];
+        return $this->container['maxCreditAmount'];
     }
 
     /**
-     * Sets href
+     * Sets maxCreditAmount
      *
-     * @param string $href Direct link for accesing the file content
+     * @param float $maxCreditAmount maxCreditAmount
      *
      * @return $this
      */
-    public function setHref($href)
+    public function setMaxCreditAmount($maxCreditAmount)
     {
-        $this->container['href'] = $href;
+        $this->container['maxCreditAmount'] = $maxCreditAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets totalCollateralAmount
+     *
+     * @return float
+     */
+    public function getTotalCollateralAmount()
+    {
+        return $this->container['totalCollateralAmount'];
+    }
+
+    /**
+     * Sets totalCollateralAmount
+     *
+     * @param float $totalCollateralAmount totalCollateralAmount
+     *
+     * @return $this
+     */
+    public function setTotalCollateralAmount($totalCollateralAmount)
+    {
+        $this->container['totalCollateralAmount'] = $totalCollateralAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets totalWithdrawn
+     *
+     * @return float
+     */
+    public function getTotalWithdrawn()
+    {
+        return $this->container['totalWithdrawn'];
+    }
+
+    /**
+     * Sets totalWithdrawn
+     *
+     * @param float $totalWithdrawn totalWithdrawn
+     *
+     * @return $this
+     */
+    public function setTotalWithdrawn($totalWithdrawn)
+    {
+        $this->container['totalWithdrawn'] = $totalWithdrawn;
 
         return $this;
     }

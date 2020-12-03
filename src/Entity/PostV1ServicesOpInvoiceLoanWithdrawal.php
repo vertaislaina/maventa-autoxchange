@@ -1,6 +1,6 @@
 <?php
 /**
- * InvoiceFile
+ * PostV1ServicesOpInvoiceLoanWithdrawal
  *
  * PHP version 5
  *
@@ -33,14 +33,15 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * InvoiceFile Class Doc Comment
+ * PostV1ServicesOpInvoiceLoanWithdrawal Class Doc Comment
  *
  * @category Class
+ * @description Make a withdrawal
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InvoiceFile implements ModelInterface, ArrayAccess
+class PostV1ServicesOpInvoiceLoanWithdrawal implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'InvoiceFile';
+    protected static $swaggerModelName = 'postV1ServicesOpInvoiceLoanWithdrawal';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +58,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-        'filename' => 'string',
-        'type' => 'string',
-        'mimetype' => 'string',
-        'href' => 'string'
+        'amount' => 'float'
     ];
 
     /**
@@ -70,11 +67,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'filename' => null,
-        'type' => null,
-        'mimetype' => null,
-        'href' => null
+        'amount' => 'float'
     ];
 
     /**
@@ -104,11 +97,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'filename' => 'filename',
-        'type' => 'type',
-        'mimetype' => 'mimetype',
-        'href' => 'href'
+        'amount' => 'amount'
     ];
 
     /**
@@ -117,11 +106,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'filename' => 'setFilename',
-        'type' => 'setType',
-        'mimetype' => 'setMimetype',
-        'href' => 'setHref'
+        'amount' => 'setAmount'
     ];
 
     /**
@@ -130,11 +115,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'filename' => 'getFilename',
-        'type' => 'getType',
-        'mimetype' => 'getMimetype',
-        'href' => 'getHref'
+        'amount' => 'getAmount'
     ];
 
     /**
@@ -197,11 +178,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['filename'] = isset($data['filename']) ? $data['filename'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['mimetype'] = isset($data['mimetype']) ? $data['mimetype'] : null;
-        $this->container['href'] = isset($data['href']) ? $data['href'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
     }
 
     /**
@@ -213,8 +190,8 @@ class InvoiceFile implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,121 +209,25 @@ class InvoiceFile implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets amount
      *
-     * @return string
+     * @return float
      */
-    public function getId()
+    public function getAmount()
     {
-        return $this->container['id'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets id
+     * Sets amount
      *
-     * @param string $id Unique ID of the file
+     * @param float $amount EUR amount to withdraw
      *
      * @return $this
      */
-    public function setId($id)
+    public function setAmount($amount)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets filename
-     *
-     * @return string
-     */
-    public function getFilename()
-    {
-        return $this->container['filename'];
-    }
-
-    /**
-     * Sets filename
-     *
-     * @param string $filename File name
-     *
-     * @return $this
-     */
-    public function setFilename($filename)
-    {
-        $this->container['filename'] = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type File format
-     *
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets mimetype
-     *
-     * @return string
-     */
-    public function getMimetype()
-    {
-        return $this->container['mimetype'];
-    }
-
-    /**
-     * Sets mimetype
-     *
-     * @param string $mimetype Mime type passed when created or inferred from file extension
-     *
-     * @return $this
-     */
-    public function setMimetype($mimetype)
-    {
-        $this->container['mimetype'] = $mimetype;
-
-        return $this;
-    }
-
-    /**
-     * Gets href
-     *
-     * @return string
-     */
-    public function getHref()
-    {
-        return $this->container['href'];
-    }
-
-    /**
-     * Sets href
-     *
-     * @param string $href Direct link for accesing the file content
-     *
-     * @return $this
-     */
-    public function setHref($href)
-    {
-        $this->container['href'] = $href;
+        $this->container['amount'] = $amount;
 
         return $this;
     }

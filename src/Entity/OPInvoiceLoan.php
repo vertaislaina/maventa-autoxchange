@@ -1,6 +1,6 @@
 <?php
 /**
- * InvoiceFile
+ * OPInvoiceLoan
  *
  * PHP version 5
  *
@@ -33,14 +33,15 @@ use \ArrayAccess;
 use \Vertaislaina\Maventa\AutoXChange\ObjectSerializer;
 
 /**
- * InvoiceFile Class Doc Comment
+ * OPInvoiceLoan Class Doc Comment
  *
  * @category Class
+ * @description 
  * @package  Vertaislaina\Maventa\AutoXChange
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InvoiceFile implements ModelInterface, ArrayAccess
+class OPInvoiceLoan implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'InvoiceFile';
+    protected static $swaggerModelName = 'OPInvoiceLoan';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +58,14 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-        'filename' => 'string',
-        'type' => 'string',
-        'mimetype' => 'string',
-        'href' => 'string'
+        'status' => 'string',
+        'channelUserId' => 'string',
+        'contactEmail' => 'string',
+        'iban' => 'string',
+        'bic' => 'string',
+        'bank' => 'string',
+        'activationUrl' => 'string',
+        'opBankDetails' => '\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoanBankDetails'
     ];
 
     /**
@@ -70,11 +74,14 @@ class InvoiceFile implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'filename' => null,
-        'type' => null,
-        'mimetype' => null,
-        'href' => null
+        'status' => null,
+        'channelUserId' => null,
+        'contactEmail' => null,
+        'iban' => null,
+        'bic' => null,
+        'bank' => null,
+        'activationUrl' => null,
+        'opBankDetails' => null
     ];
 
     /**
@@ -104,11 +111,14 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'filename' => 'filename',
-        'type' => 'type',
-        'mimetype' => 'mimetype',
-        'href' => 'href'
+        'status' => 'status',
+        'channelUserId' => 'channel_user_id',
+        'contactEmail' => 'contact_email',
+        'iban' => 'iban',
+        'bic' => 'bic',
+        'bank' => 'bank',
+        'activationUrl' => 'activation_url',
+        'opBankDetails' => 'op_bank_details'
     ];
 
     /**
@@ -117,11 +127,14 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'filename' => 'setFilename',
-        'type' => 'setType',
-        'mimetype' => 'setMimetype',
-        'href' => 'setHref'
+        'status' => 'setStatus',
+        'channelUserId' => 'setChannelUserId',
+        'contactEmail' => 'setContactEmail',
+        'iban' => 'setIban',
+        'bic' => 'setBic',
+        'bank' => 'setBank',
+        'activationUrl' => 'setActivationUrl',
+        'opBankDetails' => 'setOpBankDetails'
     ];
 
     /**
@@ -130,11 +143,14 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'filename' => 'getFilename',
-        'type' => 'getType',
-        'mimetype' => 'getMimetype',
-        'href' => 'getHref'
+        'status' => 'getStatus',
+        'channelUserId' => 'getChannelUserId',
+        'contactEmail' => 'getContactEmail',
+        'iban' => 'getIban',
+        'bic' => 'getBic',
+        'bank' => 'getBank',
+        'activationUrl' => 'getActivationUrl',
+        'opBankDetails' => 'getOpBankDetails'
     ];
 
     /**
@@ -178,8 +194,25 @@ class InvoiceFile implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const STATUS_DISABLED = 'DISABLED';
+    const STATUS_ACTIVE = 'ACTIVE';
+    const STATUS_PENDING = 'PENDING';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_DISABLED,
+            self::STATUS_ACTIVE,
+            self::STATUS_PENDING,
+        ];
+    }
     
 
     /**
@@ -197,11 +230,14 @@ class InvoiceFile implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['filename'] = isset($data['filename']) ? $data['filename'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['mimetype'] = isset($data['mimetype']) ? $data['mimetype'] : null;
-        $this->container['href'] = isset($data['href']) ? $data['href'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['channelUserId'] = isset($data['channelUserId']) ? $data['channelUserId'] : null;
+        $this->container['contactEmail'] = isset($data['contactEmail']) ? $data['contactEmail'] : null;
+        $this->container['iban'] = isset($data['iban']) ? $data['iban'] : null;
+        $this->container['bic'] = isset($data['bic']) ? $data['bic'] : null;
+        $this->container['bank'] = isset($data['bank']) ? $data['bank'] : null;
+        $this->container['activationUrl'] = isset($data['activationUrl']) ? $data['activationUrl'] : null;
+        $this->container['opBankDetails'] = isset($data['opBankDetails']) ? $data['opBankDetails'] : null;
     }
 
     /**
@@ -213,9 +249,14 @@ class InvoiceFile implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -232,121 +273,202 @@ class InvoiceFile implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets status
      *
      * @return string
      */
-    public function getId()
+    public function getStatus()
     {
-        return $this->container['id'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets id
+     * Sets status
      *
-     * @param string $id Unique ID of the file
+     * @param string $status Service status
      *
      * @return $this
      */
-    public function setId($id)
+    public function setStatus($status)
     {
-        $this->container['id'] = $id;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets filename
+     * Gets channelUserId
      *
      * @return string
      */
-    public function getFilename()
+    public function getChannelUserId()
     {
-        return $this->container['filename'];
+        return $this->container['channelUserId'];
     }
 
     /**
-     * Sets filename
+     * Sets channelUserId
      *
-     * @param string $filename File name
+     * @param string $channelUserId Channel user id for the company
      *
      * @return $this
      */
-    public function setFilename($filename)
+    public function setChannelUserId($channelUserId)
     {
-        $this->container['filename'] = $filename;
+        $this->container['channelUserId'] = $channelUserId;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets contactEmail
      *
      * @return string
      */
-    public function getType()
+    public function getContactEmail()
     {
-        return $this->container['type'];
+        return $this->container['contactEmail'];
     }
 
     /**
-     * Sets type
+     * Sets contactEmail
      *
-     * @param string $type File format
+     * @param string $contactEmail Company contact email
      *
      * @return $this
      */
-    public function setType($type)
+    public function setContactEmail($contactEmail)
     {
-        $this->container['type'] = $type;
+        $this->container['contactEmail'] = $contactEmail;
 
         return $this;
     }
 
     /**
-     * Gets mimetype
+     * Gets iban
      *
      * @return string
      */
-    public function getMimetype()
+    public function getIban()
     {
-        return $this->container['mimetype'];
+        return $this->container['iban'];
     }
 
     /**
-     * Sets mimetype
+     * Sets iban
      *
-     * @param string $mimetype Mime type passed when created or inferred from file extension
+     * @param string $iban Company IBAN account number
      *
      * @return $this
      */
-    public function setMimetype($mimetype)
+    public function setIban($iban)
     {
-        $this->container['mimetype'] = $mimetype;
+        $this->container['iban'] = $iban;
 
         return $this;
     }
 
     /**
-     * Gets href
+     * Gets bic
      *
      * @return string
      */
-    public function getHref()
+    public function getBic()
     {
-        return $this->container['href'];
+        return $this->container['bic'];
     }
 
     /**
-     * Sets href
+     * Sets bic
      *
-     * @param string $href Direct link for accesing the file content
+     * @param string $bic Company bank BIC number
      *
      * @return $this
      */
-    public function setHref($href)
+    public function setBic($bic)
     {
-        $this->container['href'] = $href;
+        $this->container['bic'] = $bic;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank
+     *
+     * @return string
+     */
+    public function getBank()
+    {
+        return $this->container['bank'];
+    }
+
+    /**
+     * Sets bank
+     *
+     * @param string $bank Company bank name
+     *
+     * @return $this
+     */
+    public function setBank($bank)
+    {
+        $this->container['bank'] = $bank;
+
+        return $this;
+    }
+
+    /**
+     * Gets activationUrl
+     *
+     * @return string
+     */
+    public function getActivationUrl()
+    {
+        return $this->container['activationUrl'];
+    }
+
+    /**
+     * Sets activationUrl
+     *
+     * @param string $activationUrl Url for the user to sign the agreement
+     *
+     * @return $this
+     */
+    public function setActivationUrl($activationUrl)
+    {
+        $this->container['activationUrl'] = $activationUrl;
+
+        return $this;
+    }
+
+    /**
+     * Gets opBankDetails
+     *
+     * @return \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoanBankDetails
+     */
+    public function getOpBankDetails()
+    {
+        return $this->container['opBankDetails'];
+    }
+
+    /**
+     * Sets opBankDetails
+     *
+     * @param \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoanBankDetails $opBankDetails Bank account details to be used on invoices
+     *
+     * @return $this
+     */
+    public function setOpBankDetails($opBankDetails)
+    {
+        $this->container['opBankDetails'] = $opBankDetails;
 
         return $this;
     }

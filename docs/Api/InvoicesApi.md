@@ -295,7 +295,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | **\SplFileObject**| File content |
- **format** | **string**| File format |
+ **format** | **string**| File format | [optional]
  **recipientType** | **string**| Only in Norway, set to \&quot;consumer\&quot; to use route_order | [optional] [default to b2b]
  **recipientEia** | **string**| Recipient EIA | [optional]
  **recipientEmail** | **string**| Recipient email address | [optional]
