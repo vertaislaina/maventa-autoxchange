@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **sendInvoiceGeneral** | [**\Vertaislaina\Maventa\AutoXChange\Entity\CompanySettingsCompanySendInvoiceGeneralSettings**](CompanySettingsCompanySendInvoiceGeneralSettings.md) | Company invoice sending general settings | [optional] 
 **logos** | [**\Vertaislaina\Maventa\AutoXChange\Entity\CompanySettingsCompanyLogos**](CompanySettingsCompanyLogos.md) | Company logos | [optional] 
 **checks** | [**\Vertaislaina\Maventa\AutoXChange\Entity\CompanySettingsCompanyChecks**](CompanySettingsCompanyChecks.md) | Checks to be executed | [optional] 
+**emailReports** | [**\Vertaislaina\Maventa\AutoXChange\Entity\CompanySettingsCompanyEmailReports**](CompanySettingsCompanyEmailReports.md) | Company email reports settings | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

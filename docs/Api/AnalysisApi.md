@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **getV1AnalysisDefinitions**
-> \Vertaislaina\Maventa\AutoXChange\Entity\CheckDefinitions getV1AnalysisDefinitions()
+> \Vertaislaina\Maventa\AutoXChange\Entity\CheckDefinitions getV1AnalysisDefinitions($checks, $checkAttributes)
 
 
 
@@ -26,9 +26,11 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\AnalysisApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$checks = array("checks_example"); // string[] | Filter definitions by checks. Possible values:  SUPPLIER_ACTIVATION, SENDER_BID_STATUS, SENDER_WARNING_LIST, VAT
+$checkAttributes = array("checkAttributes_example"); // string[] | Filter only definitions of interest. Possible values:  name, friendly_name, friendly_names, title, titles, description, descriptions, doc_description, resource_type, scope, scopes, sources, metadata, possible_results
 
 try {
-    $result = $apiInstance->getV1AnalysisDefinitions();
+    $result = $apiInstance->getV1AnalysisDefinitions($checks, $checkAttributes);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalysisApi->getV1AnalysisDefinitions: ', $e->getMessage(), PHP_EOL;
@@ -37,7 +39,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **checks** | [**string[]**](../Model/string.md)| Filter definitions by checks. Possible values:  SUPPLIER_ACTIVATION, SENDER_BID_STATUS, SENDER_WARNING_LIST, VAT | [optional]
+ **checkAttributes** | [**string[]**](../Model/string.md)| Filter only definitions of interest. Possible values:  name, friendly_name, friendly_names, title, titles, description, descriptions, doc_description, resource_type, scope, scopes, sources, metadata, possible_results | [optional]
 
 ### Return type
 
@@ -55,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getV1AnalysisId**
-> \Vertaislaina\Maventa\AutoXChange\Entity\Analysis getV1AnalysisId($id)
+> \Vertaislaina\Maventa\AutoXChange\Entity\Analysis[] getV1AnalysisId($id)
 
 
 
@@ -96,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\Analysis**](../Model/Analysis.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\Analysis[]**](../Model/Analysis.md)
 
 ### Authorization
 
@@ -110,11 +116,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postV1Analysis**
-> \Vertaislaina\Maventa\AutoXChange\Entity\Analysis postV1Analysis($resourceId, $resourceType, $checksToRun)
+> \Vertaislaina\Maventa\AutoXChange\Entity\Analysis[] postV1Analysis($resourceId, $resourceType, $checksToRun)
 
 Trigger analysis for resource
 
-Following checks can be triggered:  **SUPPLIER_ACTIVATION** Check performed on: INVOICE For invoices received through scan service, checks if the sender has sent electronic invoices in the past and could be contacted to change to electronic sending.   **SENDER_BID_STATUS** Check performed on: INVOICE Checks the invoice sender against national company register to see that the company business ID is registered and active.  The check also returns information if the company is going through solvency or bankruptcy proceedings. The registries used to get this information, depend on the country of the sender and are as follows: 1. Finland - YTJ [ http://www.ytj.fi ] 2. Norway - Brønnøysundregistrene [ https://brreg.no ] 3. Other countries -> not supported    **SENDER_WARNING_LIST** Check performed on: INVOICE Checks the invoice sender against a list of suspicious/fraud companies.   **VAT** Check performed on: INVOICE For invoices containing value added tax, checks that the sender of the invoice is found in VAT register. Note that if the total amount of value added tax on the invoice is under 1 EUR/NOK/SEK etc., the invoice sender is not checked against the VAT register. The registries used to get this information, depend on the country of the sender and are as follows: 1. Norway - Brønnøysundregistrene [ https://brreg.no ] 2. EU countries - Vies [ https://ec.europa.eu/taxation_customs/vies/ ] 3. Other countries - not supported
+Following checks can be triggered:  **SUPPLIER_ACTIVATION** Check performed on: INVOICE For invoices received through scan service, checks if the sender has sent electronic invoices in the past and could be contacted to change to electronic sending.   **SENDER_BID_STATUS** Check performed on: INVOICE Checks the invoice sender against national company register to see that the company business ID is registered and active. The check also returns information if the company is going through insolvency or bankruptcy proceedings. For Finland additional checking that the company is found in the Prepayment register. The registries used to get this information, depend on the country of the sender and are as follows: 1. Finland - YTJ [ http://www.ytj.fi ] 2. Norway - Brønnøysundregistrene [ https://brreg.no ] 3. Other countries -> not supported    **SENDER_WARNING_LIST** Check performed on: INVOICE Checks the invoice sender against a list of suspicious/fraud companies.   **VAT** Check performed on: INVOICE For invoices containing value added tax, checks that the sender of the invoice is found in VAT register. Note that if the total amount of value added tax on the invoice is under 1 EUR/NOK/SEK etc., the invoice sender is not checked against the VAT register. The registries used to get this information, depend on the country of the sender and are as follows: 1. Norway - Brønnøysundregistrene [ https://brreg.no ] 2. EU countries - Vies [ https://ec.europa.eu/taxation_customs/vies/ ] 3. Other countries - not supported
 
 ### Example
 ```php
@@ -155,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\Analysis**](../Model/Analysis.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\Analysis[]**](../Model/Analysis.md)
 
 ### Authorization
 

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteV1OperatorNotificationsId**](OperatorApi.md#deleteV1OperatorNotificationsId) | **DELETE** /v1/operator/notifications/{id} | 
 [**deleteV1OperatorParticipantsId**](OperatorApi.md#deleteV1OperatorParticipantsId) | **DELETE** /v1/operator/participants/{id} | 
+[**getV1OperatorCompanies**](OperatorApi.md#getV1OperatorCompanies) | **GET** /v1/operator/companies | 
 [**getV1OperatorNotifications**](OperatorApi.md#getV1OperatorNotifications) | **GET** /v1/operator/notifications | 
 [**getV1OperatorNotificationsId**](OperatorApi.md#getV1OperatorNotificationsId) | **GET** /v1/operator/notifications/{id} | 
 [**getV1OperatorParticipants**](OperatorApi.md#getV1OperatorParticipants) | **GET** /v1/operator/participants | 
@@ -107,6 +108,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[operator_auth](../../README.md#operator_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getV1OperatorCompanies**
+> \Vertaislaina\Maventa\AutoXChange\Entity\OperatorCompany[] getV1OperatorCompanies($bid, $country)
+
+
+
+Get company data
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: operator_auth
+$config = Vertaislaina\Maventa\AutoXChange\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\OperatorApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$bid = "bid_example"; // string | Company business identifier
+$country = "country_example"; // string | Country in ISO 3166-1 alpha-2 format (2 letters)
+
+try {
+    $result = $apiInstance->getV1OperatorCompanies($bid, $country);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OperatorApi->getV1OperatorCompanies: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bid** | **string**| Company business identifier |
+ **country** | **string**| Country in ISO 3166-1 alpha-2 format (2 letters) |
+
+### Return type
+
+[**\Vertaislaina\Maventa\AutoXChange\Entity\OperatorCompany[]**](../Model/OperatorCompany.md)
 
 ### Authorization
 

@@ -9,14 +9,14 @@ Method | HTTP request | Description
 [**getV1ServicesAtgAccountNumber**](ServicesApi.md#getV1ServicesAtgAccountNumber) | **GET** /v1/services/atg/{account_number} | Fetch ATG agreement
 [**getV1ServicesAtgMandates**](ServicesApi.md#getV1ServicesAtgMandates) | **GET** /v1/services/atg/mandates | List B2C ATG mandates
 [**getV1ServicesB2cnoConsumers**](ServicesApi.md#getV1ServicesB2cnoConsumers) | **GET** /v1/services/b2cno/consumers | List B2CNO Consumers
-[**getV1ServicesOpInvoiceLoan**](ServicesApi.md#getV1ServicesOpInvoiceLoan) | **GET** /v1/services/op_invoice_loan | Current information about the OP Laskulaina service
-[**getV1ServicesOpInvoiceLoanAccountStatement**](ServicesApi.md#getV1ServicesOpInvoiceLoanAccountStatement) | **GET** /v1/services/op_invoice_loan/account_statement | Fetch account statement
-[**getV1ServicesOpInvoiceLoanAvailableCredit**](ServicesApi.md#getV1ServicesOpInvoiceLoanAvailableCredit) | **GET** /v1/services/op_invoice_loan/available_credit | Check the credit balance
+[**getV1ServicesOpInvoiceCredit**](ServicesApi.md#getV1ServicesOpInvoiceCredit) | **GET** /v1/services/op_invoice_credit | Current information about the OP Laskulaina service
+[**getV1ServicesOpInvoiceCreditAccountStatement**](ServicesApi.md#getV1ServicesOpInvoiceCreditAccountStatement) | **GET** /v1/services/op_invoice_credit/account_statement | Fetch account statement
+[**getV1ServicesOpInvoiceCreditAvailableCredit**](ServicesApi.md#getV1ServicesOpInvoiceCreditAvailableCredit) | **GET** /v1/services/op_invoice_credit/available_credit | Check the credit balance
 [**getV1ServicesReceivables**](ServicesApi.md#getV1ServicesReceivables) | **GET** /v1/services/receivables | Current state of the receivables service
 [**patchV1ServicesAtgAccountNumber**](ServicesApi.md#patchV1ServicesAtgAccountNumber) | **PATCH** /v1/services/atg/{account_number} | Update existing ATG agreement
 [**postV1ServicesAtg**](ServicesApi.md#postV1ServicesAtg) | **POST** /v1/services/atg | Create a new ATG agreement
-[**postV1ServicesOpInvoiceLoanWithdrawal**](ServicesApi.md#postV1ServicesOpInvoiceLoanWithdrawal) | **POST** /v1/services/op_invoice_loan/withdrawal | Make a withdrawal
-[**putV1ServicesOpInvoiceLoan**](ServicesApi.md#putV1ServicesOpInvoiceLoan) | **PUT** /v1/services/op_invoice_loan | Start the OP Laskulaina onboarding
+[**postV1ServicesOpInvoiceCreditWithdrawal**](ServicesApi.md#postV1ServicesOpInvoiceCreditWithdrawal) | **POST** /v1/services/op_invoice_credit/withdrawal | Make a withdrawal
+[**putV1ServicesOpInvoiceCredit**](ServicesApi.md#putV1ServicesOpInvoiceCredit) | **PUT** /v1/services/op_invoice_credit | Start the OP Laskulaina onboarding
 [**putV1ServicesReceivables**](ServicesApi.md#putV1ServicesReceivables) | **PUT** /v1/services/receivables | Start the Receivables service onboarding
 
 
@@ -292,8 +292,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getV1ServicesOpInvoiceLoan**
-> \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoan getV1ServicesOpInvoiceLoan()
+# **getV1ServicesOpInvoiceCredit**
+> \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceCredit getV1ServicesOpInvoiceCredit()
 
 Current information about the OP Laskulaina service
 
@@ -315,10 +315,10 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
 );
 
 try {
-    $result = $apiInstance->getV1ServicesOpInvoiceLoan();
+    $result = $apiInstance->getV1ServicesOpInvoiceCredit();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ServicesApi->getV1ServicesOpInvoiceLoan: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ServicesApi->getV1ServicesOpInvoiceCredit: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -328,7 +328,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoan**](../Model/OPInvoiceLoan.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceCredit**](../Model/OPInvoiceCredit.md)
 
 ### Authorization
 
@@ -341,8 +341,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getV1ServicesOpInvoiceLoanAccountStatement**
-> getV1ServicesOpInvoiceLoanAccountStatement($day)
+# **getV1ServicesOpInvoiceCreditAccountStatement**
+> getV1ServicesOpInvoiceCreditAccountStatement($day)
 
 Fetch account statement
 
@@ -365,9 +365,9 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
 $day = new \DateTime("2013-10-20"); // \DateTime | Date for which to fetch transactions
 
 try {
-    $apiInstance->getV1ServicesOpInvoiceLoanAccountStatement($day);
+    $apiInstance->getV1ServicesOpInvoiceCreditAccountStatement($day);
 } catch (Exception $e) {
-    echo 'Exception when calling ServicesApi->getV1ServicesOpInvoiceLoanAccountStatement: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ServicesApi->getV1ServicesOpInvoiceCreditAccountStatement: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -393,8 +393,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getV1ServicesOpInvoiceLoanAvailableCredit**
-> \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoanAvailableCredit getV1ServicesOpInvoiceLoanAvailableCredit()
+# **getV1ServicesOpInvoiceCreditAvailableCredit**
+> \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceCreditAvailableCredit getV1ServicesOpInvoiceCreditAvailableCredit()
 
 Check the credit balance
 
@@ -416,10 +416,10 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
 );
 
 try {
-    $result = $apiInstance->getV1ServicesOpInvoiceLoanAvailableCredit();
+    $result = $apiInstance->getV1ServicesOpInvoiceCreditAvailableCredit();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ServicesApi->getV1ServicesOpInvoiceLoanAvailableCredit: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ServicesApi->getV1ServicesOpInvoiceCreditAvailableCredit: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -429,7 +429,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoanAvailableCredit**](../Model/OPInvoiceLoanAvailableCredit.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceCreditAvailableCredit**](../Model/OPInvoiceCreditAvailableCredit.md)
 
 ### Authorization
 
@@ -598,8 +598,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **postV1ServicesOpInvoiceLoanWithdrawal**
-> postV1ServicesOpInvoiceLoanWithdrawal($v1ServicesOpInvoiceLoanWithdrawal)
+# **postV1ServicesOpInvoiceCreditWithdrawal**
+> postV1ServicesOpInvoiceCreditWithdrawal($v1ServicesOpInvoiceCreditWithdrawal)
 
 Make a withdrawal
 
@@ -619,12 +619,12 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$v1ServicesOpInvoiceLoanWithdrawal = new \Vertaislaina\Maventa\AutoXChange\Entity\PostV1ServicesOpInvoiceLoanWithdrawal(); // \Vertaislaina\Maventa\AutoXChange\Entity\PostV1ServicesOpInvoiceLoanWithdrawal | 
+$v1ServicesOpInvoiceCreditWithdrawal = new \Vertaislaina\Maventa\AutoXChange\Entity\PostV1ServicesOpInvoiceCreditWithdrawal(); // \Vertaislaina\Maventa\AutoXChange\Entity\PostV1ServicesOpInvoiceCreditWithdrawal | 
 
 try {
-    $apiInstance->postV1ServicesOpInvoiceLoanWithdrawal($v1ServicesOpInvoiceLoanWithdrawal);
+    $apiInstance->postV1ServicesOpInvoiceCreditWithdrawal($v1ServicesOpInvoiceCreditWithdrawal);
 } catch (Exception $e) {
-    echo 'Exception when calling ServicesApi->postV1ServicesOpInvoiceLoanWithdrawal: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ServicesApi->postV1ServicesOpInvoiceCreditWithdrawal: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -633,7 +633,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **v1ServicesOpInvoiceLoanWithdrawal** | [**\Vertaislaina\Maventa\AutoXChange\Entity\PostV1ServicesOpInvoiceLoanWithdrawal**](../Model/PostV1ServicesOpInvoiceLoanWithdrawal.md)|  |
+ **v1ServicesOpInvoiceCreditWithdrawal** | [**\Vertaislaina\Maventa\AutoXChange\Entity\PostV1ServicesOpInvoiceCreditWithdrawal**](../Model/PostV1ServicesOpInvoiceCreditWithdrawal.md)|  |
 
 ### Return type
 
@@ -650,8 +650,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **putV1ServicesOpInvoiceLoan**
-> \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoan putV1ServicesOpInvoiceLoan($v1ServicesOpInvoiceLoan)
+# **putV1ServicesOpInvoiceCredit**
+> \Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceCredit putV1ServicesOpInvoiceCredit($v1ServicesOpInvoiceCredit)
 
 Start the OP Laskulaina onboarding
 
@@ -671,13 +671,13 @@ $apiInstance = new Vertaislaina\Maventa\AutoXChange\Api\ServicesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$v1ServicesOpInvoiceLoan = new \Vertaislaina\Maventa\AutoXChange\Entity\PutV1ServicesOpInvoiceLoan(); // \Vertaislaina\Maventa\AutoXChange\Entity\PutV1ServicesOpInvoiceLoan | 
+$v1ServicesOpInvoiceCredit = new \Vertaislaina\Maventa\AutoXChange\Entity\PutV1ServicesOpInvoiceCredit(); // \Vertaislaina\Maventa\AutoXChange\Entity\PutV1ServicesOpInvoiceCredit | 
 
 try {
-    $result = $apiInstance->putV1ServicesOpInvoiceLoan($v1ServicesOpInvoiceLoan);
+    $result = $apiInstance->putV1ServicesOpInvoiceCredit($v1ServicesOpInvoiceCredit);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ServicesApi->putV1ServicesOpInvoiceLoan: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ServicesApi->putV1ServicesOpInvoiceCredit: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -686,11 +686,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **v1ServicesOpInvoiceLoan** | [**\Vertaislaina\Maventa\AutoXChange\Entity\PutV1ServicesOpInvoiceLoan**](../Model/PutV1ServicesOpInvoiceLoan.md)|  |
+ **v1ServicesOpInvoiceCredit** | [**\Vertaislaina\Maventa\AutoXChange\Entity\PutV1ServicesOpInvoiceCredit**](../Model/PutV1ServicesOpInvoiceCredit.md)|  |
 
 ### Return type
 
-[**\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceLoan**](../Model/OPInvoiceLoan.md)
+[**\Vertaislaina\Maventa\AutoXChange\Entity\OPInvoiceCredit**](../Model/OPInvoiceCredit.md)
 
 ### Authorization
 
